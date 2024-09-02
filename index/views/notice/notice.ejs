@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/index.css"/> 
+    <link rel="stylesheet" href="../static/notice.css"/> 
+    <title>공지사항</title>
+</head>
+<body>
+    <header>
+        <img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고">
+        <div class="search_banner">
+            <img src="../images/memory_search.svg" alt="검색아이콘">
+            <input type="text" name="search_value" alt="검색창">
+        </div>
+    </header>
+        <a href="/">돌아가기</a>
+        <h1>공지사항 페이지입니다.</h1>
+        <div class="notice_content">
+            <a href="#">공지사항 작성</a>
+            <div class="notice_list">
+                <ul>
+                    <% notices.forEach(notice => { %>
+                        <li><a href="/notice/<%= notice.notice_id %>"><%= notice.title %><p><%= notice.created_at></p></a></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    <footer>
+        <ul>
+            <li><a href="#">페이지 소개</a></li>
+            <li><a href="#">사용자 이용약관</a></li>
+            <li><a href="#">개인정보 처리방침</a></li>
+            <li><a href="#">자주묻는 질문</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+        <p>email: tabby@naver.com</p>
+        <p>© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
+    </footer>
+</body>
+</html>

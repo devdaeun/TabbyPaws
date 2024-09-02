@@ -1,0 +1,28 @@
+.notice_content {
+    background-color: #FFF6E9;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 20px 10px;
+}
+
+.notice_list {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.notice_list > ul {
+    list-style: none;
+    padding: 10px 20px;
+    background-color: #EED493;
+}
+
+.notice_list li {
+    border-bottom: 1px solid;
+    margin-bottom: 8px;
+}
+
+.notice_list a {
+    text-decoration: none;
+    color: black;
+}
