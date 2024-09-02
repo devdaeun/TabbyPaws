@@ -3,11 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/index.css"/>
+    <link rel="stylesheet" href="../../static/notice.css">
     <title><%= notice.title %></title>
 </head>
 <body>
-    <h1><%= notice.title %></h1>
-    <p><%= notice.content %></p>
-    <a href="/notice">리스트로 돌아가기</a>
+    <header>
+        <img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고">
+    </header>
+    <div>
+        <form>
+            <input value="<%= notice.title %>" id="title" readonly>
+            <textarea id="content" readonly><%= notice.content %></textarea>
+
+            <div id="review-mbtn">
+                <input type="button" value="수정반영하기" onclick="updateNotice(<%= notice.notice_id %>)">
+                <input type="button" value="취소" onclick="cancelEdit()">
+            </div>
+            <div class="review-form-btn">
+                <div id="review-btn">
+                    <input type="button" value="수정하기" onclick="enableEdit()">
+                    <input type="button" value="삭제하기" onclick="deleteNotice(<%= notice.notice_id %>)">
+                </div>
+                <input id="backbtn" type="button" value="리스트로 돌아가기" onclick="backToList()">
+            </div>
+        </form>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="#">페이지 소개</a></li>
+            <li><a href="#">사용자 이용약관</a></li>
+            <li><a href="#">개인정보 처리방침</a></li>
+            <li><a href="#">자주묻는 질문</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+        <p>email: tabby@naver.com</p>
+        <p>© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../static/js/notice.js"></script>
 </body>
 </html>

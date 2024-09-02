@@ -1,9 +1,10 @@
 .notice_content {
     background-color: #FFF6E9;
-    width: 80%;
-    margin: 0 auto;
+    width: 75%;
+    margin: 0 auto 30px;
     border-radius: 8px;
     padding: 20px 10px;
+    height: 500px;
 }
 
 .notice_list {
@@ -25,4 +26,19 @@
 .notice_list a {
     text-decoration: none;
     color: black;
+}
+
+.notice_form {
+    background-color: #FFF6E9;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.notice_form > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_btns {
+    display: flex;
 }

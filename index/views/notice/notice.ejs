@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/index.css"/> 
-    <link rel="stylesheet" href="../static/notice.css"/> 
+    <link rel="stylesheet" href="../../static/index.css"/> 
+    <link rel="stylesheet" href="../../static/notice.css"/> 
     <title>공지사항</title>
 </head>
 <body>
@@ -18,11 +18,11 @@
         <a href="/">돌아가기</a>
         <h1>공지사항 페이지입니다.</h1>
         <div class="notice_content">
-            <a href="#">공지사항 작성</a>
+            <a href="/notice/form">공지사항 작성</a>
             <div class="notice_list">
                 <ul>
                     <% notices.forEach(notice => { %>
-                        <li><a href="/notice/<%= notice.notice_id %>"><%= notice.title %><p><%= notice.created_at></p></a></li>
+                        <li><a href="/notice/<%= notice.notice_id %>"><%= notice.title %><p><%= notice.created_date %></p></a></li>
                     <% }) %>
                 </ul>
             </div>

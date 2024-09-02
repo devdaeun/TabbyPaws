@@ -89,7 +89,7 @@ footer > ul{
     padding-left: 15px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 50px;
 }
 
 footer li>a {

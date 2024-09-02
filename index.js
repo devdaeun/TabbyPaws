@@ -11,6 +11,9 @@ const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'index/views'));
 
+// URL 인코딩된 데이터 처리 (form 데이터)
+app.use(express.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, 'index')));
 
 app.use('/', main);

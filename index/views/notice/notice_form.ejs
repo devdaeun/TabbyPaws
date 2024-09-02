@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/index.css"/>
+    <link rel="stylesheet" href="../../static/notice.css">
+    <title>공지사항 등록</title>
+</head>
+<body>
+    <header>
+        <img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고">
+    </header>
+    <div class="notice_form">
+        <form action="/notice/add" method="post">
+            <label>제목</label><input type="text" name="title" id="title">
+            <label>내용</label><textarea name="content" maxlength="200" id="content"></textarea>
+            <div class="form_btns">
+                <input type="submit" value="등록">
+                <input type="reset" value="취소">
+            </div>
+        </form>
+        <button><a href="/notice">리스트로 돌아가기</a></button>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="#">페이지 소개</a></li>
+            <li><a href="#">사용자 이용약관</a></li>
+            <li><a href="#">개인정보 처리방침</a></li>
+            <li><a href="#">자주묻는 질문</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+        <p>email: tabby@naver.com</p>
+        <p>© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
+    </footer>
+</body>
+</html>
