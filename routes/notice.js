@@ -1,5 +1,6 @@
 import express from 'express';
 import connection  from '../database.js';
+import moment from 'moment';
 
 const router = express.Router();
 
@@ -12,6 +13,9 @@ router.get('/notice', (req, res) => {
             res.status(500).send('서버 오류');
             return;
         }
+        results.forEach(notice =>{
+            notice.created_date = moment(notice.created_date).format('YYYY-MM-DD');
+        })
 
         res.render('notice/notice', { notices: results });
     });
