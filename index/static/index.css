@@ -12,6 +12,12 @@ header {
     text-align: center;
 }
 
+.login-paw-btn {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+}
+
 .search_banner {
     background-color: #FFF6E9;
     display: flex;
