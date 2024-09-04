@@ -5,7 +5,16 @@
 .login-container {
     padding: 70px 40px;
     background-color: #FFF6E9;
-    width: 800px;
+    width: 780px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 7px;
+}
+
+.join-container {
+    padding: 70px 40px;
+    background-color: #FFF6E9;
+    width: 900px;
     margin: 0 auto;
     text-align: center;
     border-radius: 7px;
@@ -15,30 +24,55 @@
     margin-bottom: 60px;
 }
 
+.join-container img {
+    margin-bottom: 60px;
+}
+
 .login-form > input {
     font-size: 20px;
-    width: 620px;
-    height: 95px;
+    width: 580px;
+    height: 85px;
     border-radius: 5px 5px 0 0;
     border: 5px solid #FFB85A;
     padding: 10px 20px;
     text-align: left;
 }
 
-.login-form .login-btn {
+.join-form  input {
+    font-size: 20px;
+    width: 600px;
+    height: 60px;
+    border: 1px solid #CCC;
+    padding: 10px 20px;
+    text-align: left;
+    border-top: 0;
+}
+
+.email-form {
+    margin-top: 40px;
+}
+
+.login-form .login-btn, .join-form .join-btn {
     height: 80px;
     margin: 20px 0;
     font-size: 30px;
     background-color: #FFB85A;
     padding: 10px 0;
     border: 0;
+    border-radius: 5px;
     text-align: center;
 }
+
 
 #password {
     border-top: 0;
     border-radius: 0 0 5px 5px;
     margin-bottom: 40px;
+}
+
+#join-password {
+    margin: 0;
+    border-radius: 0;
 }
 
 .ect-link {
@@ -62,4 +96,36 @@
 .ect-link  a:hover {
     text-decoration: blink;
     color: #6ABE75;
+}
+
+.join_duplicate {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.join_duplicate > button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 7px 10px;
+    font-size: 15px;
+    border-radius: 7px;
+    border: 0;
+    background-color: #DCDCDC;
+    cursor: pointer;
+}
+
+.join_duplicate > #id, .join_duplicate > #email {
+    border-top: 1px solid #CCC;
+    border-radius: 5px 5px 0 0;
+}
+
+.register {
+    margin-top: 50px;
+}
+
+.register  input {
+    width: 20px;
+    height: 20px;
 }
