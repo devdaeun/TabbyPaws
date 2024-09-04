@@ -1,0 +1,44 @@
+.topper {
+    display: flex;
+    margin: 0 auto;
+    gap: 20px;
+    width: 85%;
+}
+
+.category {
+    padding: 15px 20px;
+    background-color: #FFF6E9;
+    width: 60%;
+    display: inline-block;
+    margin-left: 20px;
+    border-radius: 8px;
+}
+
+.nav {
+    list-style: none;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav a {
+    font-size: 22px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav_mini {
+    list-style: none;
+    padding: 3px;
+}
+
+.nav_mini  a {
+    font-size: 20px;
+}
+
+.notice {
+    width: 35%;
+    background-color: #FFF6E9;
+    display: inline-block;
+    border-radius: 8px;
+}
