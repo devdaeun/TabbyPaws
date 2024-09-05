@@ -12,7 +12,7 @@
     <div class="login-background">
         <div class="join-container">
             <a href="/"><img src="../../images/TabbyPaws.svg" alt="메인페이지로 돌아가기"></a>
-            <form action="/join/member" class="join-form">
+            <form action="/join/member" class="join-form" method="post">
                 <div class="join_duplicate">
                     <input type="text" alt="아이디" id="id" placeholder="아이디" name="id"required>
                     <button onclick="checkUserid()">중복확인</button>
@@ -21,16 +21,16 @@
                     <input type="text" alt="닉네임" placeholder="닉네임" id="name" name="name" required>
                     <button onclick="checkUsername()">중복확인</button>
                 </div>
-                <input type="password" alt="비밀번호" id="password join-password" placeholder="비밀번호" required>
+                <input type="password" alt="비밀번호" id="password" class="join-password" name="password" placeholder="비밀번호(4자 이상)" required>
                 <input type="password" alt="비밀번호 확인" placeholder="비밀번호 확인" id="pwd_check" required>
-
+                <p id="pwd_check_result"></p>
                 <div class="email-form">
                     <div class="join_duplicate">
-                        <input id="email" type="email" placeholder="이메일" required>
+                        <input id="email" type="email" name="email" placeholder="이메일" required>
                         <button onclick="checkUseremail()">중복확인</button>
-                        <button id="send_num">인증번호 발송</button>
+                        <button id="send_num" style="display: none;">인증번호 발송</button>
                     </div>
-                    <input placeholder="인증번호">
+                    <!-- <input placeholder="인증번호"> -->
                 </div>
                 <div class="register">
                     <!-- 약관 -->
@@ -39,8 +39,7 @@
 
                     </textarea>
                     <div>
-                        <label>동의</label><input type="checkbox">
-                        <label>미동의</label><input type="checkbox">
+                        <label>동의</label><input type="checkbox" required>
                     </div>
                     <p>마케팅 수신동의(선택)</p>
                     <textarea>
@@ -48,7 +47,6 @@
                     </textarea>
                     <div>
                         <label>동의</label><input type="checkbox">
-                        <label>미동의</label><input type="checkbox">
                     </div>
                 </div>
                 <input type="submit" value="가입" class="join-btn">

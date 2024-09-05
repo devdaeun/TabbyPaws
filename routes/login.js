@@ -13,6 +13,22 @@ router.get("/join", (req, res)=>{
     res.render("login/join")
 });
 
+//회원가입 진행
+router.post("/join/member", (req, res)=>{
+    const {id, name, password, email} = req.body;
+    const sql = "insert into user(id,name,password,email) values(?, ?, ?, ?)";
+
+    connection.query(sql, [id,name,password,email], (err,results)=> {
+        if (err) {
+            console.error('쿼리 오류: ' + err.stack);
+            res.status(500).send('서버 오류');
+            return;
+        }
+        
+        res.redirect('/login');
+    });
+});
+
 // 아이디 중복 체크
 router.post("/check-id", (req, res) => {
     const { id } = req.body;
@@ -43,6 +59,25 @@ router.post("/check-name", (req, res) => {
 
     const sql = 'SELECT COUNT(*) AS count FROM user WHERE name = ?';
     connection.query(sql, [name], (error, results) => {
+        if (error) {
+            return res.status(500).json({ error: '서버 에러' });
+        }
+        const exists = results[0].count > 0;
+        res.json({ exists });
+    });
+});
+
+// 이메일 중복 체크
+router.post("/check-email", (req, res) => {
+    const { email } = req.body;
+
+    if (!email || typeof email !== 'string') {
+        console.log('유효하지 않은 닉네임:', email);
+        return res.status(400).json({ error: '유효하지 않은 닉네임' });
+    }
+
+    const sql = 'SELECT COUNT(*) AS count FROM user WHERE email = ?';
+    connection.query(sql, [email], (error, results) => {
         if (error) {
             return res.status(500).json({ error: '서버 에러' });
         }

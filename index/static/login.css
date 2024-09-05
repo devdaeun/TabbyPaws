@@ -64,15 +64,22 @@
 }
 
 
-#password {
+.join-password {
     border-top: 0;
     border-radius: 0 0 5px 5px;
     margin-bottom: 40px;
 }
 
-#join-password {
+
+#password {
     margin: 0;
     border-radius: 0;
+}
+
+#logins #password {
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 40px;
 }
 
 .ect-link {
