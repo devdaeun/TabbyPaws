@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/index.css"/>
     <link rel="stylesheet" href="../../static/login.css"/>
+    <link rel="stylesheet" th:href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>회원가입</title>
 </head>
 <body>
@@ -13,12 +14,12 @@
             <a href="/"><img src="../../images/TabbyPaws.svg" alt="메인페이지로 돌아가기"></a>
             <form action="/join/member" class="join-form">
                 <div class="join_duplicate">
-                    <input type="text" alt="아이디" id="id" placeholder="아이디" required>
-                    <button>중복확인</button>
+                    <input type="text" alt="아이디" id="id" placeholder="아이디" name="id"required>
+                    <button onclick="checkUserid()">중복확인</button>
                 </div>
                 <div class="join_duplicate">
-                    <input type="text" alt="닉네임" placeholder="닉네임" id="name" required>
-                    <button>중복확인</button>
+                    <input type="text" alt="닉네임" placeholder="닉네임" id="name" name="name" required>
+                    <button onclick="checkUsername()">중복확인</button>
                 </div>
                 <input type="password" alt="비밀번호" id="password join-password" placeholder="비밀번호" required>
                 <input type="password" alt="비밀번호 확인" placeholder="비밀번호 확인" id="pwd_check" required>
@@ -26,7 +27,8 @@
                 <div class="email-form">
                     <div class="join_duplicate">
                         <input id="email" type="email" placeholder="이메일" required>
-                        <button>인증번호 발송</button>
+                        <button onclick="checkUseremail()">중복확인</button>
+                        <button id="send_num">인증번호 발송</button>
                     </div>
                     <input placeholder="인증번호">
                 </div>
@@ -64,5 +66,7 @@
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../static/js/login.js"></script>
 </body>
 </html>
