@@ -27,6 +27,10 @@
     color: black;
 }
 
+.nav a:hover {
+    color: #6ABE75;
+}
+
 .nav_mini {
     list-style: none;
     padding: 3px;

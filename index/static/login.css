@@ -1,5 +1,5 @@
 .login-background {
-    margin: 5% 0;
+    margin: 10% 0;
 }
 
 .login-container {
@@ -53,6 +53,7 @@
 }
 
 .login-form .login-btn, .join-form .join-btn {
+    cursor: pointer;
     height: 80px;
     margin: 20px 0;
     font-size: 30px;

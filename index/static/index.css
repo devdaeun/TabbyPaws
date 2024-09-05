@@ -46,7 +46,8 @@ footer {
 }
 
 footer > ul{
-    margin: 15px auto;
+    font-size: 19px;
+    margin: 30px auto;
     list-style: none;
     padding-left: 15px;
     display: flex;
