@@ -1,12 +1,14 @@
 import express from 'express';
-import path from 'path';
 
 const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    const htmlPath = path.resolve('index/views/index.html');
-    res.sendFile(htmlPath);
+    const isAuthenticated = req.session.user ? true : false;
+    res.render('index', { 
+        isAuthenticated,
+        user: req.session.user // 세션 정보를 템플릿에 전달
+    });
 });
 
 export default router;
