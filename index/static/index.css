@@ -12,10 +12,13 @@ header {
     text-align: center;
 }
 
-.login-paw-btn {
+#login-link {
+    background-color: inherit;
     position: absolute;
     top: 20px;
     right: 100px;
+    border: 0;
+    cursor: pointer;
 }
 
 .search_banner {
@@ -63,4 +66,37 @@ footer li>a {
 footer .copywrite {
     text-align: right;
     padding-right: 20px;
+}
+
+.profile-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: #f9f9f9;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.profile-panel.open {
+    transform: translateX(0);
+}
+
+.profile-panel .close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.profile-panel .close-btn:focus {
+    outline: none;
 }

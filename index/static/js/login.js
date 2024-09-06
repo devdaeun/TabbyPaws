@@ -155,23 +155,3 @@ document.addEventListener('DOMContentLoaded', function() {
     passwordField.addEventListener('input', passwordCheck);
     passwordCheckField.addEventListener('input', passwordCheck);
 });
-
-//세션여부 확인
-document.addEventListener('DOMContentLoaded', function() {
-    const isAuthenticated = JSON.stringify(isAuthenticated);
-
-    if (isAuthenticated) {
-        const loginLink = document.getElementById('login-link');
-        const profilePanel = document.getElementById('profile-panel');
-        const closeBtn = document.getElementById('close-profile');
-
-        loginLink.addEventListener('click', function(event) {
-            event.preventDefault(); // 링크 기본 동작 방지
-            profilePanel.classList.toggle('open');
-        });
-
-        closeBtn.addEventListener('click', function() {
-            profilePanel.classList.remove('open');
-        });
-    }
-});
