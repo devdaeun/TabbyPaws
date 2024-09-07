@@ -6,6 +6,7 @@ import session from 'express-session';
 import main from './routes/main.js';
 import notice from './routes/notice.js';
 import login from './routes/login.js';
+import faq from './routes/faq.js';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -35,5 +36,6 @@ app.use(express.static(path.join(__dirname, 'index')));
 app.use('/', main);
 app.use('/', notice);
 app.use('/', login);
+app.use('/', faq);
 
 app.listen(3000, () => console.log('Server started on port 3000'));

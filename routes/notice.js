@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/notice', (req, res) => {
     const sql = 'SELECT * FROM notice';
-
+    const isAuthenticated = req.session.user ? true : false;
     connection.query(sql, (err, results) => {
         if (err) {
             console.error('쿼리 오류: ' + err.stack);
@@ -14,24 +14,33 @@ router.get('/notice', (req, res) => {
             return;
         }
         results.forEach(notice =>{
-            notice.created_date = moment(notice.created_date).format('YYYY-MM-DD');
+            notice.created_at = moment(notice.created_at).format('YYYY-MM-DD');
         })
 
-        res.render('notice/notice', { notices: results });
+        res.render('notice/notice', {
+            isAuthenticated,
+            user: req.session.user, 
+            notices: results 
+        });
     });
 });
 
 // 공지 등록 폼 페이지
 router.get('/notice/form',(req, res) => {
-    res.render('notice/notice_form');
+    const isAuthenticated = req.session.user ? true : false;
+    res.render('notice/notice_form',{
+        isAuthenticated,
+        user: req.session.user
+    });
 });
 
 // 등록 폼 저장
 router.post('/notice/add', (req, res) => {
+    const { user_id } = req.session.user;
     const { title, content } = req.body; //form으로 가져오는건 body를 통으로 가꼬와야함
-    const sql = "insert into notice (user_id, title, content, created_date) values (1, ?, ?,now())";
+    const sql = "insert into notice (user_id, title, content) values (?, ?, ?)";
 
-    connection.query(sql, [title,content],(err,results)=> {
+    connection.query(sql, [user_id, title,content],(err,results)=> {
         if (err) {
             console.error('쿼리 오류: ' + err.stack);
             res.status(500).send('서버 오류');
@@ -44,6 +53,7 @@ router.post('/notice/add', (req, res) => {
 
 // 공지 상세보기 페이지
 router.get('/notice/:notice_id', (req, res) => {
+    const isAuthenticated = req.session.user ? true : false;
     const noticeId = req.params.notice_id;
     const sql = 'SELECT * FROM notice WHERE notice_id = ?';
 
@@ -56,7 +66,11 @@ router.get('/notice/:notice_id', (req, res) => {
 
         // 상세보기 페이지 렌더링
         if (results.length > 0) {
-            res.render('notice/notice_detail', { notice: results[0] });
+            res.render('notice/notice_detail', { 
+                isAuthenticated,
+                user: req.session.user, 
+                notice: results[0] 
+            });
         } else {
             res.status(404).send('공지사항을 찾을 수 없습니다.');
         }

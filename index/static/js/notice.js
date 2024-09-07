@@ -24,6 +24,9 @@ function cancelEdit() {
 }
 
 function enableEdit() {
+    document.getElementById('review-mbtn').style.display="block";
+    document.getElementById('review-btn').style.display="none";
+
     document.getElementById('title').removeAttribute('readonly');
     document.getElementById('content').removeAttribute('readonly');
 }

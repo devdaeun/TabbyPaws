@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고">
+        <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
         <div class="search_banner">
             <img src="../images/memory_search.svg" alt="검색아이콘">
             <input type="text" name="search_value" alt="검색창">
@@ -20,8 +20,6 @@
     </header>
     <div id="profile-panel" class="profile-panel">
         <button class="close-btn" id="close-profile">닫기</button>
-        <h2>프로필</h2>
-        <p>여기에는 로그인된 사용자의 프로필 정보가 들어갑니다.</p>
         <!-- 프로필 내용을 동적으로 삽입 -->
         <% if (isAuthenticated) { %>
             <p><%= user.name %>님</p> <!-- 사용자 ID 사용 -->
@@ -38,7 +36,7 @@
                     <a href="#">홈페이지 정보</a>
                     <ul class="nav_mini">
                         <li><a href="/notice">공지사항</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="/faq">FAQ</a></li>
                         <li><a href="#">Q&A</a></li>
                     </ul>
                 </li>
@@ -68,7 +66,7 @@
         <h3>쇼핑몰</h3>
     </div>
     <div>
-
+        <h3>병원 지도 api</h3>
     </div>
     <footer>
         <ul> 
@@ -81,6 +79,6 @@
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
-    <script src="../static/js/main.js"></script>
+    <script src="../static/js/index.js"></script>
 </body>
 </html>
