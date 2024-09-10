@@ -1,0 +1,17 @@
+.intro_content {
+    width: 85%;
+    margin: 0 auto 30px;
+    background-color: #FFF6E9;
+    padding: 20px;
+    border-radius: 10px;
+}
+.introduce {
+    display: inline-block;
+    width: 55%;
+}
+
+.engineer {
+    display: inline-block;
+    width: 40%;
+    padding: 20px;
+}

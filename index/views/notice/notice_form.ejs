@@ -18,10 +18,26 @@
         <button class="close-btn" id="close-profile">닫기</button>
         <!-- 프로필 내용을 동적으로 삽입 -->
         <% if (isAuthenticated) { %>
-            <p><%= user.name %>님</p> <!-- 사용자 ID 사용 -->
+            <div class="my_page">
+                <a href="#" class="profile_img"></a>
+                <p class="user_name"><%= user.name %>님</p> <!-- 사용자 ID 사용 -->
+                </div>
+            <ul class="my_link">
+                <li><a href="">구매내역</a></li>
+                <li><a href="">장바구니</a></li>
+                <li><a href="">환불/교환 신청</a></li>
+                <li><a href="">공지사항</a></li>
+                <li><a href="">FAQ</a></li>
+            </ul>
+            <ul class="modify_link">
+                <li><a href="">회원정보 수정</a></li>
+                <li><a href="">비밀번호 수정</a></li>
+                <li><a href="">로그아웃</a></li>
+            </ul>
         <% } else { %>
-            <h3>로그인</h3>
-            <p><a href="/login">로그인</a> 후 사용 가능한 기능입니다.</p>
+            <div class="login_page">
+                <p><a href="/login">로그인</a> 후 이용가능합니다.</p>
+            </div>
         <% } %>
     </div>
     <div class="notice_form">

@@ -49,8 +49,8 @@ footer {
 }
 
 footer > ul{
-    font-size: 19px;
-    margin: 30px auto;
+    font-size: 16px;
+    margin: 20px auto;
     list-style: none;
     padding-left: 15px;
     display: flex;
@@ -66,15 +66,16 @@ footer li>a {
 footer .copywrite {
     text-align: right;
     padding-right: 20px;
+    font-size: 12px;
 }
 
 .profile-panel {
     position: fixed;
     top: 0;
     right: 0;
-    width: 300px;
+    width: 370px;
     height: 100%;
-    background: #f9f9f9;
+    background: #FFF6E9;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     transform: translateX(100%);
     transition: transform 0.3s ease;
@@ -90,13 +91,58 @@ footer .copywrite {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #333;
+    background: #CB8325;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 9px;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .profile-panel .close-btn:focus {
     outline: none;
+}
+
+.login_page, .my_page {
+    display: flex;
+    padding: 65px 25px 25px;
+    align-items: center;
+    gap: 30px;
+    border-bottom: 3px solid #d8c6a9;
+}
+
+.profile_img {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    background-color: #CB8325;
+}
+
+.user_name {
+    display: inline-block;
+    font-size: 25px;
+}
+
+.my_link {
+    list-style: none;
+    padding: 25px;
+    line-height: 40px;
+    border-bottom: 3px solid #d8c6a9;
+}
+
+.my_link a, .modify_link a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+.my_link a:hover, .modify_link a:hover {
+    color: #CB8325;
+}
+
+.modify_link {
+    list-style: none;
+    padding: 25px;
+    line-height: 40px;
 }

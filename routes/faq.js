@@ -5,7 +5,7 @@ import moment from 'moment';
 const router = express.Router();
 
 //faq 리스트
-router.get('/faq', (req, res) => {
+router.get('/', (req, res) => {
     const sql = 'SELECT * FROM faq';
     const isAuthenticated = req.session.user ? true : false;
     connection.query(sql, (err, results) => {
@@ -27,7 +27,7 @@ router.get('/faq', (req, res) => {
 });
 
 //faq 작성
-router.get('/faq/form', (req, res) => {
+router.get('/form', (req, res) => {
     const isAuthenticated = req.session.user ? true : false;
     res.render('faq/faq_form',{
         isAuthenticated,
@@ -36,7 +36,7 @@ router.get('/faq/form', (req, res) => {
 });
 
 //faq 등록
-router.post('/faq/add',(req, res) => {
+router.post('/add',(req, res) => {
     const { user_id } = req.session.user;
     const { title, content } = req.body;
     const sql = 'insert into faq(user_id, title, content) values(?, ?, ?)';
@@ -52,7 +52,7 @@ router.post('/faq/add',(req, res) => {
 });
 
 //faq 수정
-router.post('/faq/update/:faq_id', (req,res) =>{
+router.post('/update/:faq_id', (req,res) =>{
     const faqId = req.params.faq_id;
     const sql = 'update faq set title=?, content=? where faq_id =?';
 
@@ -70,7 +70,7 @@ router.post('/faq/update/:faq_id', (req,res) =>{
 });
 
 //faq 삭제
-router.post('/faq/delete/:faq_id', (req, res) => {
+router.post('/delete/:faq_id', (req, res) => {
     const faqId = req.params.faq_id;
     const sql = 'DELETE FROM faq WHERE faq_id = ?';
 

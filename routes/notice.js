@@ -4,7 +4,7 @@ import moment from 'moment';
 
 const router = express.Router();
 
-router.get('/notice', (req, res) => {
+router.get('/', (req, res) => {
     const sql = 'SELECT * FROM notice';
     const isAuthenticated = req.session.user ? true : false;
     connection.query(sql, (err, results) => {
@@ -26,7 +26,7 @@ router.get('/notice', (req, res) => {
 });
 
 // 공지 등록 폼 페이지
-router.get('/notice/form',(req, res) => {
+router.get('/form',(req, res) => {
     const isAuthenticated = req.session.user ? true : false;
     res.render('notice/notice_form',{
         isAuthenticated,
@@ -35,7 +35,7 @@ router.get('/notice/form',(req, res) => {
 });
 
 // 등록 폼 저장
-router.post('/notice/add', (req, res) => {
+router.post('/add', (req, res) => {
     const { user_id } = req.session.user;
     const { title, content } = req.body; //form으로 가져오는건 body를 통으로 가꼬와야함
     const sql = "insert into notice (user_id, title, content) values (?, ?, ?)";
@@ -52,7 +52,7 @@ router.post('/notice/add', (req, res) => {
 });
 
 // 공지 상세보기 페이지
-router.get('/notice/:notice_id', (req, res) => {
+router.get('/:notice_id', (req, res) => {
     const isAuthenticated = req.session.user ? true : false;
     const noticeId = req.params.notice_id;
     const sql = 'SELECT * FROM notice WHERE notice_id = ?';
@@ -78,7 +78,7 @@ router.get('/notice/:notice_id', (req, res) => {
 });
 
 //공지 수정
-router.post('/notice/update/:notice_id', (req,res) =>{
+router.post('/update/:notice_id', (req,res) =>{
     const noticeId = req.params.notice_id;
     const sql = 'update notice set title=?, content=? where notice_id =?';
 
@@ -96,7 +96,7 @@ router.post('/notice/update/:notice_id', (req,res) =>{
 });
 
 // 공지 삭제
-router.post('/notice/delete/:notice_id', (req, res) => {
+router.post('/delete/:notice_id', (req, res) => {
     const noticeId = req.params.notice_id;
     const sql = 'DELETE FROM notice WHERE notice_id = ?';
 

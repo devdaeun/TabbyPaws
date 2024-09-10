@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../static/index.css"/>
-    <link rel="stylesheet" href="../../static/notice.css">
-    <title><%= notice.title %></title>
+    <link rel="stylesheet" href="../static/index.css"/> 
+    <title>상품 등록 폼</title>
 </head>
 <body>
     <header>
-        <img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고">
+        <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+        <div class="search_banner">
+            <img src="../images/memory_search.svg" alt="검색아이콘">
+            <input type="text" name="search_value" alt="검색창">
+        </div>
         <button id="login-link">
             <img src="../images/login_paw.svg" alt="로그인" class="login-paw-btn">
         </button>
@@ -40,38 +43,31 @@
             </div>
         <% } %>
     </div>
-    <div>
-        <form>
-            <input value="<%= notice.title %>" id="title" readonly>
-            <textarea id="content" readonly><%= notice.content %></textarea>
-            <% if (isAuthenticated && user.role === '관리자') { %>
-                <div id="review-mbtn" style="display: none;">
-                    <input type="button" value="수정반영하기" onclick="updateNotice(<%= notice.notice_id %>)">
-                    <input type="button" value="취소" onclick="cancelEdit()">
-                </div>
-                <div class="review-form-btn">
-                    <div id="review-btn">
-                        <input type="button" value="수정하기" onclick="enableEdit()">
-                        <input type="button" value="삭제하기" onclick="deleteNotice(<%= notice.notice_id %>)">
-                    </div>
-                    <input id="backbtn" type="button" value="리스트로 돌아가기" onclick="backToList()">
-                </div>
-            <% } %>
-        </form>
-    </div>
+    <form action="/shop/add" method="post">
+        <input type="text" name="title">
+        <textarea name="content"></textarea>
+        <select>
+            <option value="키튼">키튼</option>
+            <option value="성묘">성묘</option>
+            <option value="노묘">노묘</option>
+        </select>
+        <div>
+            <input type="checkbox">
+        </div>
+        <textarea name="ingredient"></textarea>
+        <button>이미지추가</button>
+        <input type="file">
+    </form>
     <footer>
-        <ul>
-            <li><a href="#">페이지 소개</a></li>
+        <ul> 
+            <li><a href="/introduce">페이지 소개</a></li>
             <li><a href="#">사용자 이용약관</a></li>
             <li><a href="#">개인정보 처리방침</a></li>
-            <li><a href="#">자주묻는 질문</a></li>
+            <li><a href="/faq">자주묻는 질문</a></li>
             <li><a href="#">contact</a></li>
         </ul>
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../static/js/notice.js"></script>
-    <script src="../static/js/index.js"></script>
 </body>
 </html>

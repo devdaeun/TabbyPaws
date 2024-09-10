@@ -40,6 +40,19 @@ router.post("/login/enter", (req, res)=>{
     });
 });
 
+//로그아웃
+router.get('/logout', (req, res)=>{
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('세션 삭제 오류: ' + err.stack);
+            res.status(500).send('서버 오류');
+            return;
+        }
+        // 세션 삭제 후 홈 페이지로 리다이렉트
+        res.redirect('/');
+    });
+});
+
 //회원가입 폼으로 이동
 router.get("/join", (req, res)=>{
     res.render("login/join")
