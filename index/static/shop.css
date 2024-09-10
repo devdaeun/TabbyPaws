@@ -1,0 +1,44 @@
+.shop_container {
+    background-color: #FFF6E9;
+    width: 90%;
+    margin: 0 auto 30px;
+    padding: 20px;
+}
+
+.link_check {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.link_check > input {
+    width: 20px;
+}
+
+.link_container > input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    display: none;
+}
+
+.aliergic_container {
+    display: flex;
+    gap: 20px;
+}
+
+.aliergic_container > span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aliergic_container > span input {
+    margin-top: 10px;
+}
+
+form h3 {
+    margin-top: 20px;
+    font-size: 20px;
+}

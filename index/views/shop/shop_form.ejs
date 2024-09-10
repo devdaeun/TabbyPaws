@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/index.css"/> 
+    <link rel="stylesheet" href="../static/shop.css"/>  
     <title>상품 등록 폼</title>
 </head>
 <body>
     <header>
         <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
-        <div class="search_banner">
-            <img src="../images/memory_search.svg" alt="검색아이콘">
-            <input type="text" name="search_value" alt="검색창">
-        </div>
         <button id="login-link">
             <img src="../images/login_paw.svg" alt="로그인" class="login-paw-btn">
         </button>
@@ -43,21 +40,60 @@
             </div>
         <% } %>
     </div>
-    <form action="/shop/add" method="post">
-        <input type="text" name="title">
-        <textarea name="content"></textarea>
-        <select>
-            <option value="키튼">키튼</option>
-            <option value="성묘">성묘</option>
-            <option value="노묘">노묘</option>
-        </select>
-        <div>
-            <input type="checkbox">
+    <div class="shop_container">
+        <div class="link_container">
+            <div class="link_check"><h2>상품이 등록되어있는 쇼핑몰 링크가 있으신가요?</h2><input type="checkbox"></div>
+            <input type="text" placeholder="상품페이지가 연결된 쇼핑몰 링크를 등록해주세요">
         </div>
-        <textarea name="ingredient"></textarea>
-        <button>이미지추가</button>
-        <input type="file">
-    </form>
+        <form action="/shop/add" method="post">
+            <h3>상품 이미지 등록</h3>
+            <input type="file">
+            <h3>상품제목</h3>
+            <input type="text" name="title">
+            <h3>상품소개</h3>
+            <textarea name="content"></textarea>
+            <h3>상품 상세정보 <span>* 선택적 필수 사항</span></h3>
+            <div>
+                <p>알러지 성분 여부</p>
+                <div class="aliergic_container">
+                    <span>
+                        <img src="../../images/chicken.svg">
+                        <label>닭고기</label>
+                        <input type="checkbox">
+                    </span>
+                    <span>
+                        <img src="../../images/beef.svg">
+                        <label>소고기</label>
+                        <input type="checkbox">
+                    </span>
+                    <span>
+                        <img src="../../images/fork.svg">
+                        <label>돼지고기</label>
+                        <input type="checkbox">
+                    </span>
+                    <span>
+                        <img src="../../images/nuts.svg">
+                        <label>견과류</label>
+                        <input type="checkbox">
+                    </span>
+                </div>
+            </div>
+            <div>
+                <p>급여 권장연령</p>
+                <select>
+                    <option value="키튼">키튼</option>
+                    <option value="성묘">성묘</option>
+                    <option value="노묘">노묘</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox">
+            </div>
+            <textarea name="ingredient"></textarea>
+            <button>이미지추가</button>
+            <input type="file">
+        </form>
+    </div>
     <footer>
         <ul> 
             <li><a href="/introduce">페이지 소개</a></li>
