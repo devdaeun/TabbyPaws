@@ -28,31 +28,33 @@
             <p><a href="/login">로그인</a> 후 사용 가능한 기능입니다.</p>
         <% } %>
     </div>
-    <% if (isAuthenticated && user.role === '관리자') { %>
-        <a href="/faq/form">faq 작성하기</a>
-    <% } %>
-    <% faqs.forEach(faq => { %>
-        <form class="faqitem">
-            <input type="hidden" value="<%= faq.faq_id %>" name="faq_id">
-            <div>
-                <input type="text" value="<%= faq.title %>" name="title" class="faq_title" readonly>
-                <img src="../../images/angle_down.svg" alt="상세보기 버튼" class="toggle_btn">
-            </div>
-            <div class="answer" style="display: none;">
-                <input type="text" value="<%= faq.content %>" name="content" class="faq_content" readonly>
-            </div>
-            <% if (isAuthenticated && user.role === '관리자') { %>
-                <div class="review_mbtn" style="display: none;">
-                    <input type="button" value="수정반영하기" onclick="updateFaq(this.form)">
-                    <input type="button" value="뒤로가기" onclick="">
+    <div class="faq_container">
+        <% if (isAuthenticated && user.role === '관리자') { %>
+            <a href="/faq/form">faq 작성하기</a>
+        <% } %>
+        <% faqs.forEach(faq => { %>
+            <form class="faqitem">
+                <input type="hidden" value="<%= faq.faq_id %>" name="faq_id">
+                <div class="title_box">
+                    <input type="text" value="<%= faq.title %>" name="title" class="faq_title" disabled>
+                    <img src="../../images/angle_down.svg" alt="상세보기 버튼" class="toggle_btn">
                 </div>
-                <div class="rewrite_btn">
-                    <input type="button" value="수정" class="modify_button">
-                    <input type="button" value="삭제" class="faq-button" onclick="deleteFaq(<%= faq.faq_id %>)">
+                <div class="answer" style="display: none;">
+                    <input type="text" value="<%= faq.content %>" name="content" class="faq_content" disabled>
                 </div>
-            <% } %>
-        </form>
-    <% }) %>
+                <% if (isAuthenticated && user.role === '관리자') { %>
+                    <div class="review_mbtn" style="display: none;">
+                        <input type="button" value="수정반영하기" onclick="updateFaq(this.form)">
+                        <input type="button" value="뒤로가기" onclick="">
+                    </div>
+                    <div class="rewrite_btn">
+                        <input type="button" value="수정" class="modify_button">
+                        <input type="button" value="삭제" class="faq-button" onclick="deleteFaq(<%= faq.faq_id %>)">
+                    </div>
+                <% } %>
+            </form>
+        <% }) %>
+    </div>
     <footer>
         <ul>
             <li><a href="#">페이지 소개</a></li>

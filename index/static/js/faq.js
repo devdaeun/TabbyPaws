@@ -27,8 +27,8 @@ $(function() {
         // 총 부모 요소()를 선택합니다.
         let tparent = mparent.parent();
 
-        tparent.find(".faq_title").prop('readonly', false);
-        tparent.find(".faq_content").prop('readonly', false);
+        tparent.find(".faq_title").prop('disabled', false);
+        tparent.find(".faq_content").prop('disabled', false);
     });
 });
 
