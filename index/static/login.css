@@ -124,9 +124,13 @@
     cursor: pointer;
 }
 
-.join_duplicate > #id, .join_duplicate > #email {
+.join_duplicate > #id {
     border-top: 1px solid #CCC;
     border-radius: 5px 5px 0 0;
+}
+
+.join_duplicate > #email, .join_duplicate > #bussniess_num {
+    border-top: 1px solid #CCC;
 }
 
 .register {
@@ -136,4 +140,23 @@
 .register  input {
     width: 20px;
     height: 20px;
+}
+
+.join-check {
+    display: flex;
+    flex-direction: column;
+}
+
+.join-check a {
+    text-decoration: none;
+    color: white;
+    background-color: #FFB85A;
+    padding: 30px 20px;
+    font-size: 25px;
+    width: 50%;
+    margin: 10px auto;
+}
+
+.join-check a:hover {
+    color: #b67117;
 }

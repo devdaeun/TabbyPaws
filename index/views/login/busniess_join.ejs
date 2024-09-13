@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/index.css"/>
+    <link rel="stylesheet" href="../../static/login.css"/>
+    <link rel="stylesheet" th:href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <title>회원가입</title>
+</head>
+<body>
+    <div class="login-background">
+        <div class="join-container">
+            <a href="/"><img src="../../images/TabbyPaws.svg" alt="메인페이지로 돌아가기"></a>
+            <form action="/join/bussniess_member" class="join-form" method="post">
+                <div class="join_duplicate">
+                    <input type="text" alt="아이디" id="id" placeholder="아이디" name="id"required>
+                    <button onclick="checkUserid()">중복확인</button>
+                </div>
+                <div class="join_duplicate">
+                    <input type="text" alt="닉네임" placeholder="닉네임" id="name" name="name" required>
+                    <button onclick="checkUsername()">중복확인</button>
+                </div>
+                <input type="password" alt="비밀번호" id="password" class="join-password" name="password" minlength="6" placeholder="비밀번호(6자 이상)" required>
+                <input type="password" alt="비밀번호 확인" placeholder="비밀번호 확인" id="pwd_check" required>
+                <p id="pwd_check_result"></p>
+                <div>
+                    <div class="join_duplicate">
+                        <input type="text" alt="사업자번호" placeholder="사업자번호" id="bussniess_num" name="bussniess_num" required>
+                        <button onclick="checkUsername()">중복확인</button>
+                    </div>
+                </div>
+                <div class="email-form">
+                    <div class="join_duplicate">
+                        <input id="email" type="email" name="email" placeholder="이메일" required>
+                        <button onclick="checkUseremail()">중복확인</button>
+                        <button id="send_num" style="display: none;">인증번호 발송</button>
+                    </div>
+                    <!-- <input placeholder="인증번호"> -->
+                </div>
+                <div class="register">
+                    <!-- 약관 -->
+                    <p>기본약관(필수)</p>
+                    <textarea>
+
+                    </textarea>
+                    <div>
+                        <label>동의</label><input type="checkbox" required>
+                    </div>
+                    <p>마케팅 수신동의(선택)</p>
+                    <textarea>
+
+                    </textarea>
+                    <div>
+                        <label>동의</label><input type="checkbox">
+                    </div>
+                </div>
+                <input type="submit" value="가입" class="join-btn">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="#">페이지 소개</a></li>
+            <li><a href="#">사용자 이용약관</a></li>
+            <li><a href="#">개인정보 처리방침</a></li>
+            <li><a href="#">자주묻는 질문</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+        <p>email: tabby@naver.com</p>
+        <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../static/js/login.js"></script>
+</body>
+</html>

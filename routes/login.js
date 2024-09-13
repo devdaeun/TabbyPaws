@@ -53,9 +53,19 @@ router.get('/logout', (req, res)=>{
     });
 });
 
-//회원가입 폼으로 이동
+//회원가입 선택폼으로 이동
+router.get("/join_check", (req, res)=>{
+    res.render("login/join_check")
+});
+
+//일반회원가입 폼으로 이동
 router.get("/join", (req, res)=>{
     res.render("login/join")
+});
+
+//사업자 회원가입 폼으로 이동
+router.get("/busniess_join", (req, res)=>{
+    res.render("login/busniess_join")
 });
 
 //회원가입 진행
@@ -73,6 +83,22 @@ router.post("/join/member", (req, res)=>{
         res.redirect('/login');
     });
 });
+
+router.post("/join/bussniess_member", (req, res)=>{
+    const {id, name, password, email, bussniess_num} = req.body;
+    const sql = "insert into user(id,name,password,email,bussniess_num,role) values(?, ?, ?, ?, ?, '사업자')";
+
+    connection.query(sql, [id,name,password,email,bussniess_num], (err,results)=> {
+        if (err) {
+            console.error('쿼리 오류: ' + err.stack);
+            res.status(500).send('서버 오류');
+            return;
+        }
+        
+        res.redirect('/login');
+    });
+});
+
 
 // 아이디 중복 체크
 router.post("/check-id", (req, res) => {
