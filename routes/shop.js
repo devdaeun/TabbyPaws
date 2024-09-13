@@ -54,8 +54,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/add', upload.array('image_name'), (req,res)=>{
-    console.log(req.files)
-    console.log(req.body)
     const { title, content, age, ingredient, allergies} = req.body;
     const { user_id } = req.session.user;
 
