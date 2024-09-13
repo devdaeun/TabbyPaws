@@ -4,23 +4,54 @@ import moment from 'moment';
 
 const router = express.Router();
 
+const ITEMS_LINIT_PAGE = 10; //글 수가 10개이상이되면 페이징
+
 router.get('/', (req, res) => {
-    const sql = 'SELECT * FROM notice';
-    const isAuthenticated = req.session.user ? true : false;
-    connection.query(sql, (err, results) => {
+    // 페이지값 있으면 가져오고 없으면 기본값 1입니다.
+    const page = parseInt(req.query.page) || 1;
+    // 페이징을 위한 쿼리 작성
+    const offset = (page - 1) * ITEMS_LINIT_PAGE; 
+    // 해당페이지의 10번째 항목부터 가져와야해서 10을 곱한다
+
+    const countSql = 'SELECT COUNT(*) AS count FROM notice'; 
+    //공지사항 테이블의 전체 공지 수를 센다
+
+    connection.query(countSql, (err, countResults) => {
         if (err) {
             console.error('쿼리 오류: ' + err.stack);
             res.status(500).send('서버 오류');
             return;
         }
-        results.forEach(notice =>{
-            notice.created_at = moment(notice.created_at).format('YYYY-MM-DD');
-        })
+        
+        // 전체 항목 수가 있으면 그 값을 items에 저장
+        const totalItems = countResults[0].count; //항목수를 숫자로 가져옴
+        
+        // 전체 페이지 수
+        const totalPages = Math.ceil(totalItems / ITEMS_LINIT_PAGE); //전체에서 10개로 나누깅
 
-        res.render('notice/notice', {
-            isAuthenticated,
-            user: req.session.user, 
-            notices: results 
+        // 데이터 가져오기 쿼리
+        const sql = `SELECT * FROM notice LIMIT ${offset}, ${ITEMS_LINIT_PAGE}`;
+        const isAuthenticated = req.session.user ? true : false;
+        
+        connection.query(sql, (err, results) => {
+            if (err) {
+                console.error('쿼리 오류: ' + err.stack);
+                res.status(500).send('서버 오류');
+                return;
+            }
+            
+            results.forEach(notice => {
+                notice.created_at = moment(notice.created_at).format('YYYY-MM-DD');
+            });
+
+            // 페이지 관련 정보를 템플릿에 전달
+            res.render('notice/notice', {
+                isAuthenticated,
+                user: req.session.user,
+                notices: results,
+                currentPage: page,
+                totalPages: totalPages
+            });
         });
     });
 });
