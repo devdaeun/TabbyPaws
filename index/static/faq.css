@@ -12,7 +12,7 @@
 
 .faq_container {
     background-color: #FFF6E9;
-    width: 90%;
+    width: 85%;
     margin: 0 auto 30px;
     padding: 20px;
 }
@@ -34,4 +34,26 @@
 .title_box input, .answer input {
     color: black;
     font-size: 20px;
+}
+
+.link {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.link > a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background-color: #FFF6E9;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+.link > a:hover {
+    color: #6ABE75;
+}
+
+.link .checked {
+    background-color: #CB8325;
 }

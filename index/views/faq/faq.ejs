@@ -28,6 +28,11 @@
             <p><a href="/login">로그인</a> 후 사용 가능한 기능입니다.</p>
         <% } %>
     </div>
+    <div class="link">
+        <a href="/introduce">페이지 소개</a>
+        <a href="/notice">공지사항</a>
+        <a href="/faq" class="checked">FAQ</a>
+    </div>
     <div class="faq_container">
         <% if (isAuthenticated && user.role === '관리자') { %>
             <a href="/faq/form">faq 작성하기</a>

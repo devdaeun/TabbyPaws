@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/index.css"/> 
+    <link rel="stylesheet" href="../static/shop.css"/> 
     <title>쇼핑몰</title>
 </head>
 <body>
@@ -43,12 +44,19 @@
             </div>
         <% } %>
     </div>
-    <a href="/shop/form">상품 등록하기</a>
-    <div>
+    <div></div>
+    <div class="all-shopList">
+        <% if (isAuthenticated && user.role === '사업자')  { %>
+            <a href="/shop/form" class="shop_form_link">상품 등록하기</a>
+        <% } %>
         <% shop.forEach(shop => { %>
-            <img src="<%=shop.img_name%>" style="max-width: 200px;">
-            <li><%= shop.title%></li>
-            <li><%= shop.allergies %></li>
+            <a>
+                <div class="shop-item" data-allergies="<%= shop.allergies %>">
+                    <img src="<%=shop.img_name%>" style="max-width: 200px;">
+                    <p><%= shop.title%></p>
+                    <div class="allergies-icons"></div>
+                </div>
+            </a>
         <% }) %>
     </div>
     <footer>
@@ -62,5 +70,7 @@
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../../static/js/shop.js"></script>
 </body>
 </html>

@@ -44,6 +44,11 @@
             </div>
         <% } %>
     </div>
+    <div class="link">
+        <a href="/introduce">페이지 소개</a>
+        <a href="/notice" class="checked">공지사항</a>
+        <a href="/faq">FAQ</a>
+    </div>
     <div class="notice_content">
         <% if (isAuthenticated && user.role === '관리자') { %>
             <a href="/notice/form">공지사항 작성</a>

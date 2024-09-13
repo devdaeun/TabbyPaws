@@ -24,3 +24,42 @@ document.addEventListener('DOMContentLoaded', () =>{
         checkbox.addEventListener('change', updateValue);
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 모든 .shop-item 요소를 선택합니다
+    document.querySelectorAll('.shop-item').forEach(item => {
+      // data-allergies 속성에서 알레르기 정보를 가져옵니다
+      const allergies = item.getAttribute('data-allergies');
+      const allergiesArray = allergies ? allergies.split(',') : [];
+      
+      // 아이콘을 추가할 .allergies-icons 요소를 선택합니다
+      const iconsContainer = item.querySelector('.allergies-icons');
+
+      // 각 알레르기에 대해 아이콘을 추가합니다
+      allergiesArray.forEach(allergy => {
+        let iconSrc;
+
+        // 아이콘 소스를 결정합니다
+        switch (allergy.trim()) {
+          case 'chicken':
+            iconSrc = '../../images/chicken.svg';
+            break;
+          case 'beef':
+            iconSrc = '../../images/beef.svg';
+            break;
+          case 'pork':
+            iconSrc = '../../images/pork.svg';
+            break;
+          case 'nuts':
+            iconSrc = '../../images/nuts.svg';
+            break;
+        }
+
+        // 아이콘 이미지를 생성하고 .allergies-icons에 추가합니다
+        const img = document.createElement('img');
+        img.src = iconSrc;
+        img.alt = `${allergy} Allergy`;
+        iconsContainer.appendChild(img);
+      });
+    });
+  });

@@ -1,9 +1,10 @@
 .intro_content {
+    display: flex;
     width: 85%;
     margin: 0 auto 30px;
     background-color: #FFF6E9;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 0 10px 10px 10px;
 }
 .introduce {
     display: inline-block;
@@ -14,4 +15,31 @@
     display: inline-block;
     width: 40%;
     padding: 20px;
+}
+
+.introduce p {
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+
+.link {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.link > a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    background-color: #FFF6E9;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+.link > a:hover {
+    color: #6ABE75;
+}
+
+.link .checked {
+    background-color: #CB8325;
 }
