@@ -32,6 +32,25 @@ $(function() {
     });
 });
 
+$(function() {
+    $(".return_button").click(function() {
+        // 클릭된 버튼의 부모 요소를 선택합니다.
+        let mparent = $(this).parent();
+
+        // 부모 요소의 이전 형제 요소의 스타일을 변경합니다.
+        mparent.prev().css("display", "none");
+
+        // 부모 요소의 스타일을 변경합니다.
+        mparent.css("display", "block");
+
+        // 총 부모 요소()를 선택합니다.
+        let tparent = mparent.parent();
+
+        tparent.find(".faq_title").prop('disabled', true);
+        tparent.find(".faq_content").prop('disabled', true);
+    });
+});
+
 function updateFaq(faqlist) {
     // 폼 요소에서 데이터를 추출합니다.
     const formData = new FormData(faqlist);

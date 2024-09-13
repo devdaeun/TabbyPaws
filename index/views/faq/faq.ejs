@@ -45,7 +45,7 @@
                 <% if (isAuthenticated && user.role === '관리자') { %>
                     <div class="review_mbtn" style="display: none;">
                         <input type="button" value="수정반영하기" onclick="updateFaq(this.form)">
-                        <input type="button" value="뒤로가기" onclick="">
+                        <input type="button" value="뒤로가기" class="return_button">
                     </div>
                     <div class="rewrite_btn">
                         <input type="button" value="수정" class="modify_button">

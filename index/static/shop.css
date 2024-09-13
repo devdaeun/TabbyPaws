@@ -1,6 +1,6 @@
 .shop_container {
     background-color: #FFF6E9;
-    width: 90%;
+    width: 70%;
     margin: 0 auto 30px;
     padding: 20px;
 }
@@ -15,7 +15,7 @@
     width: 20px;
 }
 
-.link_container > input {
+.link_container  .link_text {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -41,4 +41,49 @@
 form h3 {
     margin-top: 20px;
     font-size: 20px;
+}
+
+.ingredient_detail {
+    display: flex;
+}
+
+.shop_title {
+    width: 100%;
+    border: 0;
+    height: 44px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.shop_content {
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    font-size: 18px;
+    resize: none;
+}
+
+.ingredient textarea {
+    resize: none;
+    width: 100%;
+    border: 0;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.goods-info >span {
+    color: red;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.goods-info {
+    margin-bottom: 20px;
+}
+
+.recommand_age span{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
 }
