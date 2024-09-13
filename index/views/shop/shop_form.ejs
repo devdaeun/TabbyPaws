@@ -50,10 +50,9 @@
                 <input type="text" class="link_text" placeholder="상품페이지가 연결된 쇼핑몰 링크를 등록해주세요">
             </div>
         </div>
-        <form action="/shop/add" method="post">
+        <form action="/shop/add" method="post" enctype="multipart/form-data">
             <h3>상품 이미지 등록</h3>
-            <button class="img_add">이미지추가</button>
-            <input type="file" name="img_name">
+            <input type="file" name="image_name" multiple />
             <h3>상품제목</h3>
             <input type="text" name="title" class="shop_title" required>
             <h3>상품소개</h3>
@@ -87,7 +86,7 @@
                             <label>견과류</label>
                             <input type="checkbox" name="nuts">
                         </span>
-                        <input type="text" name="allergies">
+                        <input id="allergies" type="text" name="allergies">
                     </div>
                 </div>
                 <div class="recommand_age">
