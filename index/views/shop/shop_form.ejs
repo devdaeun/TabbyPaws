@@ -52,7 +52,7 @@
         </div>
         <form action="/shop/add" method="post" enctype="multipart/form-data">
             <h3>상품 이미지 등록</h3>
-            <input type="file" name="image_name" multiple />
+            <input type="file" name="image_name" multiple required/>
             <h3>상품제목</h3>
             <input type="text" name="title" class="shop_title" required>
             <h3>상품소개</h3>
@@ -60,7 +60,7 @@
             <h3 class="goods-info">상품 상세정보 <span>* 선택적 필수 사항</span></h3>
             <div class="ingredient">
                 <p>전성분</p>
-                <textarea name="ingredient"></textarea>
+                <textarea name="ingredient" required></textarea>
             </div>
             <div class="ingredient_detail">
                 <div>
@@ -86,7 +86,7 @@
                             <label>견과류</label>
                             <input type="checkbox" name="nuts">
                         </span>
-                        <input id="allergies" type="text" name="allergies">
+                        <input id="allergies" type="text" name="allergies" style="display: none;">
                     </div>
                 </div>
                 <div class="recommand_age">

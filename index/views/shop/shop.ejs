@@ -50,11 +50,12 @@
             <a href="/shop/form" class="shop_form_link">상품 등록하기</a>
         <% } %>
         <% shop.forEach(shop => { %>
-            <a>
+            <a href="/shop/<%=shop.shop_id%>">
                 <div class="shop-item" data-allergies="<%= shop.allergies %>">
                     <img src="<%=shop.img_name%>" style="max-width: 200px;">
                     <p><%= shop.title%></p>
                     <div class="allergies-icons"></div>
+                    <p><%=shop.age%></p>
                 </div>
             </a>
         <% }) %>

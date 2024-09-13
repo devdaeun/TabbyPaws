@@ -43,6 +43,22 @@
             </div>
         <% } %>
     </div>
+    <div>
+        <% shop.forEach(shop => { %>
+            <% shopImg.forEach(shopImg => { %>
+                <img src="/uploads/<%= shop.shop_id %>/<%= shopImg.img_name %>" width="200px">
+            <% }) %>
+            <div>
+                <input value="<%= shop.title %>" name="title" disabled>
+                <textarea name="content" disabled><%= shop.content %></textarea>
+                <div class="shop-item" data-allergies="<%= shop.allergies %>">
+                    <textarea name="ingredient" disabled><%= shop.ingredient %></textarea>
+                    <div class="allergies-icons"></div>
+                    <p><%=shop.age%></p>
+                </div>
+            </div>
+        <% }) %>
+    </div>
     <footer>
         <ul> 
             <li><a href="/introduce">페이지 소개</a></li>
@@ -54,5 +70,7 @@
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../../static/js/shop.js"></script>
 </body>
 </html>

@@ -56,6 +56,32 @@ router.get('/form', (req,res)=>{
     });
 });
 
+router.get('/:shop_id', (req,res)=>{
+    const isAuthenticated = req.session.user ? true : false;
+    const shopId = req.params.shop_id;
+    const sql = "select * from shop where shop_id = ?"
+    connection.query(sql, [shopId], (err, results)=>{
+        if (err) {
+            console.error('쿼리 오류: ' + err.stack);
+            res.status(500).send('서버 오류');
+            return;
+        }
+        const imgSql = "select * from shop_img where shop_id = ?"
+        connection.query(imgSql, [shopId], (err, imgResults)=>{
+            if (err) {
+                console.error('쿼리 오류: ' + err.stack);
+                res.status(500).send('서버 오류');
+                return;
+            }
+            res.render('shop/shop_detail', {
+                isAuthenticated,
+                shop: results,
+                shopImg: imgResults
+            })
+        });
+    });
+});
+
 // Multer 설정: 파일 저장 위치와 파일 이름 설정
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
