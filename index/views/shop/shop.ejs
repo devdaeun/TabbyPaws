@@ -44,6 +44,13 @@
         <% } %>
     </div>
     <a href="/shop/form">상품 등록하기</a>
+    <div>
+        <% shop.forEach(shop => { %>
+            <img src="<%=shop.img_name%>" style="max-width: 200px;">
+            <li><%= shop.title%></li>
+            <li><%= shop.allergies %></li>
+        <% }) %>
+    </div>
     <footer>
         <ul> 
             <li><a href="/introduce">페이지 소개</a></li>

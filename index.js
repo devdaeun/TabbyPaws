@@ -33,6 +33,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'index')));
+// 이미지가 저장된 디렉토리를 정적 파일로 제공
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 app.use('/', main);
 app.use('/notice', notice);

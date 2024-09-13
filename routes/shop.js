@@ -21,10 +21,29 @@ router.get('/', (req,res)=>{
             res.status(500).send('서버 오류');
             return;
         }
-        res.render('shop/shop', { 
-            isAuthenticated,
-            user: req.session.user, 
-            shop: results 
+        const shop_image = "SELECT shop_id, MIN(img_name) AS img_name FROM shop_img GROUP BY shop_id";
+        connection.query(shop_image,(err,img_results)=>{
+            if (err) {
+                console.error('쿼리 오류: ' + err.stack);
+                res.status(500).send('서버 오류');
+                return;
+            }
+            // shop_id를 기준으로 이미지 맵핑
+            const imageMap = img_results.reduce((acc, img) => {
+                acc[img.shop_id] = img.img_name;
+                return acc;
+            }, {});
+
+            // shop 데이터에 이미지 URL 추가
+            const shopWithImages = results.map(shop => ({
+                ...shop,
+                img_name: imageMap[shop.shop_id] ? `/uploads/${shop.shop_id}/${imageMap[shop.shop_id]}` : null
+            }));
+            res.render('shop/shop', { 
+                isAuthenticated,
+                user: req.session.user, 
+                shop: shopWithImages
+            });
         });
     });
 });
