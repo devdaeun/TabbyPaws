@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/index.css"/> 
-    <link rel="stylesheet" href="../static/main.css"/> 
+    <link rel="stylesheet" href="../static/main.css"/>
+    <link rel="stylesheet" href="../static/map.css"/> 
     <title>메인페이지</title>
 </head>
 <body>
@@ -77,6 +78,21 @@
         </div>
         <div class="hospital">
             <h3>병원 지도 api</h3>
+            <div id="map" style="width:auto;height:400px;">
+                <div id="menu_wrap" class="bg_white">
+                    <div class="option">
+                        <div>
+                            <form onsubmit="searchPlaces(); return false;">
+                                키워드 : <input type="text" value="서울 동물병원" id="keyword" size="15"> 
+                                <button type="submit">검색하기</button> 
+                            </form>
+                        </div>
+                    </div>
+                    <hr>
+                    <ul id="placesList"></ul>
+                    <div id="pagination"></div>
+                </div>
+            </div>
         </div>
     </div>
     <footer>
@@ -90,6 +106,8 @@
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=07d6a6c8f0e0c3a753f3a74cf6046e46&libraries=services"></script>
     <script src="../static/js/index.js"></script>
+    <script src="../static/js/map.js"></script>
 </body>
 </html>

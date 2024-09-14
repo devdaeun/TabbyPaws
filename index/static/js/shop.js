@@ -63,3 +63,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+function deleteGoods(shop_id){
+  if (confirm('정말 삭제하시겠습니까?')) {
+    $.ajax({
+        url: '/shop/delete/' + shop_id,
+        method: 'POST',
+        success: function(response) {
+            alert('삭제되었습니다.');
+            window.location.href = '/shop'; // 삭제 후 목록 페이지로 리다이렉션
+        },
+        error: function(error) {
+            alert('삭제 실패.');
+        }
+    });
+}
+}

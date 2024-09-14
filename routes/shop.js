@@ -145,4 +145,19 @@ router.post('/add', upload.array('image_name'), (req,res)=>{
     });
 });
 
+router.post('/delete/:shop_id', (req, res) => {
+    const shopId = req.params.shop_id;
+    const sql = 'DELETE FROM shop WHERE shop_id = ?';
+
+    connection.query(sql, [shopId], (err, results) => {
+        if (err) {
+            console.error('쿼리 오류: ' + err.stack);
+            res.status(500).send('서버 오류');
+            return;
+        }
+
+        res.redirect('/shop'); // 삭제 후 공지 목록 페이지로 리다이렉션
+    });
+});
+
 export default router;

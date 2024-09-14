@@ -8,11 +8,9 @@
 .category {
     padding: 15px 20px;
     background-color: #FFF6E9;
-    width: 60%;
+    width: 50%;
     display: inline-block;
-    margin-left: 20px;
     border-radius: 8px;
-    height: 130px;
 }
 
 .nav {
@@ -50,7 +48,7 @@
 }
 
 .notice {
-    width: 35%;
+    width: 54%;
     background-color: #FFF6E9;
     display: inline-block;
     border-radius: 8px;
@@ -85,16 +83,15 @@
 .shop {
     padding: 15px 20px;
     background-color: #FFF6E9;
-    width: 60%;
+    width: 48%;
     display: inline-block;
-    margin: 20px;
     border-radius: 8px;
 }
 
 .hospital {
     padding: 15px 20px;
     background-color: #FFF6E9;
-    width: 35%;
+    width: 51%;
     display: inline-block;
     border-radius: 8px;
 }
@@ -106,6 +103,8 @@
 }
 
 .middle{
+    display: flex;
     width: 85%;
-    margin: 0 auto;
+    margin: 10px auto;
+    gap: 20px;
 }

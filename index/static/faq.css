@@ -14,7 +14,7 @@
     background-color: #FFF6E9;
     width: 85%;
     margin: 0 auto 30px;
-    padding: 20px;
+    padding: 30px;
 }
 
 
@@ -56,4 +56,12 @@
 
 .link .checked {
     background-color: #CB8325;
+}
+
+.paging {
+    text-align: center;
+}
+.paging a {
+    text-decoration: none;
+    color: black;
 }

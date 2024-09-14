@@ -3,8 +3,7 @@
     width: 85%;
     margin: 0 auto 10%;
     border-radius: 0 8px 8px 8px;
-    padding: 20px 10px;
-    height: 600px;
+    padding: 30px 10px;
 }
 
 .notice_list {
@@ -96,4 +95,13 @@
     padding: 10px;
     overflow: scroll;
     overflow-x: hidden;
+}
+
+.paging {
+    text-align: center;
+}
+
+.paging a {
+    text-decoration: none;
+    color: black;
 }

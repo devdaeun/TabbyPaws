@@ -3,7 +3,7 @@
     width: 85%;
     margin: 0 auto 30px;
     background-color: #FFF6E9;
-    padding: 20px;
+    padding: 30px;
     border-radius: 0 10px 10px 10px;
 }
 .introduce {
@@ -15,6 +15,7 @@
     display: inline-block;
     width: 40%;
     padding: 20px;
+    line-height: 30px;
 }
 
 .introduce p {
