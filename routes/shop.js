@@ -75,6 +75,7 @@ router.get('/:shop_id', (req,res)=>{
             }
             res.render('shop/shop_detail', {
                 isAuthenticated,
+                user: req.session.user, 
                 shop: results,
                 shopImg: imgResults
             })
@@ -145,6 +146,106 @@ router.post('/add', upload.array('image_name'), (req,res)=>{
     });
 });
 
+//수정 폼 이동
+router.get('/modify/:shop_id', (req, res) => {
+    const isAuthenticated = req.session.user ? true : false;
+    const shopId = req.params.shop_id;
+    const sql = 'select * from shop where shop_id = ?';
+
+    connection.query(sql, [shopId], (err,results)=>{
+        if (err) {
+            console.error('쿼리 오류: ' + err.stack);
+            res.status(500).send('서버 오류');
+            return;
+        }
+        res.render('shop/shop_modify', {
+            isAuthenticated,
+            user: req.session.user, 
+            shop: results[0]
+        })
+    });
+});
+
+//수정사항 갱신
+router.post('/update/:shop_id', upload.array('image_name'), (req, res) => {
+    const shopId = req.params.shop_id;
+    const { title, content, age, ingredient, allergies } = req.body;
+    const { user_id } = req.session.user;
+
+    // 상품 정보를 업데이트
+    const sql = 'UPDATE shop SET title = ?, content = ?, age = ?, ingredient = ?, allergies = ? WHERE shop_id = ? AND user_id = ?';
+    
+    connection.query(sql, [title, content, age, ingredient, allergies, shopId, user_id], (err, results) => {
+        if (err) {
+            console.error('쿼리 오류: ' + err.stack);
+            return res.status(500).send('서버 오류');
+        }
+
+        // 기존 이미지를 삭제
+        const delImg = 'DELETE FROM shop_img WHERE shop_id = ?';
+        connection.query(delImg, [shopId], (err, resultImg) => {
+            if (err) {
+                console.error('쿼리 오류: ' + err.stack);
+                return res.status(500).send('서버 오류');
+            }
+
+            // 이미지 추가 프로미스 생성
+            const insertImagePromises = req.files.map(file => {
+                return new Promise((resolve, reject) => {
+                    const sqlImg = 'INSERT INTO shop_img (shop_id, img_name) VALUES (?, ?)';
+                    connection.query(sqlImg, [shopId, file.originalname], (err) => {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            resolve();
+                        }
+                    });
+                });
+            });
+
+            // 이미지 추가 프로미스 실행
+            Promise.all(insertImagePromises)
+                .then(() => {
+                    const shopDir = path.join(__dirname, '../uploads/', shopId.toString());
+
+                    // 폴더가 존재하면 파일 삭제
+                    if (fs.existsSync(shopDir)) {
+                        return fs.promises.readdir(shopDir)
+                            .then(files => {
+                                const unlinkPromises = files.map(file => {
+                                    const filePath = path.join(shopDir, file);
+                                    return fs.promises.unlink(filePath)
+                                        .then(() => console.log(`${file} has been deleted.`));
+                                });
+                                return Promise.all(unlinkPromises);
+                            })
+                            .then(() => {
+                                // 파일 이동
+                                const movePromises = req.files.map(file => {
+                                    const tempPath = path.join(__dirname, '../uploads/temp', file.originalname);
+                                    const finalPath = path.join(shopDir, file.originalname);
+                                    return fs.promises.rename(tempPath, finalPath)
+                                        .then(() => console.log(`${file.originalname} has been moved to ${shopDir}.`));
+                                });
+                                return Promise.all(movePromises);
+                            });
+                    } else {
+                        return Promise.resolve(); // 폴더가 없으면 바로 해결
+                    }
+                })
+                .then(() => {
+                    res.redirect(`/shop/${shopId}`);
+                })
+                .catch(err => {
+                    console.error('파일 삭제 또는 이동 오류: ' + err.stack);
+                    res.status(500).send('파일 처리 오류');
+                });
+        });
+    });
+});
+
+
+
 router.post('/delete/:shop_id', (req, res) => {
     const shopId = req.params.shop_id;
     const sql = 'DELETE FROM shop WHERE shop_id = ?';
@@ -155,8 +256,53 @@ router.post('/delete/:shop_id', (req, res) => {
             res.status(500).send('서버 오류');
             return;
         }
+        const sqlImg = 'delete from shop_img where shop_id = ?';
+        connection.query(sqlImg, [shopId], (err, resultImg)=> {
+            if (err) {
+                console.error('쿼리 오류: ' + err.stack);
+                res.status(500).send('서버 오류');
+                return;
+            }
+        });
 
-        res.redirect('/shop'); // 삭제 후 공지 목록 페이지로 리다이렉션
+        const shopDir = path.join(__dirname, '../uploads/', shopId.toString());
+
+        // shopId와 동일한 폴더만 삭제
+        if (fs.existsSync(shopDir)) {
+            fs.readdir(shopDir, (err, files) => {
+                if (err) throw err;
+
+                const unlinkPromises = files.map(file => {
+                    const filePath = path.join(shopDir, file);
+                    return new Promise((resolve, reject) => {
+                        fs.unlink(filePath, err => {
+                            if (err) {
+                                reject(err);
+                            } else {
+                                console.log(`${file} has been deleted.`);
+                                resolve();
+                            }
+                        });
+                    });
+                });
+
+                // 모든 파일 삭제 후 폴더 삭제
+                Promise.all(unlinkPromises)
+                    .then(() => {
+                        fs.rmdir(shopDir, err => {
+                            if (err) throw err;
+                            console.log(`${shopDir} has been removed.`);
+                            res.redirect('/shop'); // 삭제 후 공지 목록 페이지로 리다이렉션
+                        });
+                    })
+                    .catch(err => {
+                        console.error('파일 삭제 오류: ' + err.stack);
+                        res.status(500).send('파일 삭제 오류');
+                    });
+            });
+        } else {
+            res.redirect('/shop'); // 폴더가 없으면 바로 리다이렉션
+        }
     });
 });
 

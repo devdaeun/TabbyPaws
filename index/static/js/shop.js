@@ -79,3 +79,4 @@ function deleteGoods(shop_id){
     });
 }
 }
+

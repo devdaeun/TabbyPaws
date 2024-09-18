@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/index.css"/> 
+    <link rel="stylesheet" href="../../static/shop.css"/>  
+    <title>상품 수정</title>
+</head>
+<body>
+    <header>
+        <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+        <button id="login-link">
+            <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
+        </button>
+    </header>
+    <div id="profile-panel" class="profile-panel">
+        <button class="close-btn" id="close-profile">닫기</button>
+        <!-- 프로필 내용을 동적으로 삽입 -->
+        <% if (isAuthenticated) { %>
+            <div class="my_page">
+                <a href="#" class="profile_img"></a>
+                <p class="user_name"><%= user.name %>님</p> <!-- 사용자 ID 사용 -->
+                </div>
+            <ul class="my_link">
+                <li><a href="">구매내역</a></li>
+                <li><a href="">장바구니</a></li>
+                <li><a href="">환불/교환 신청</a></li>
+                <li><a href="">공지사항</a></li>
+                <li><a href="">FAQ</a></li>
+            </ul>
+            <ul class="modify_link">
+                <li><a href="">회원정보 수정</a></li>
+                <li><a href="">비밀번호 수정</a></li>
+                <li><a href="">로그아웃</a></li>
+            </ul>
+        <% } else { %>
+            <div class="login_page">
+                <p><a href="/login">로그인</a> 후 이용가능합니다.</p>
+            </div>
+        <% } %>
+    </div>
+    <div class="shop_container">
+        <div class="link_container">
+            <div class="link_check">
+                <h2>상품이 등록되어있는 쇼핑몰 링크가 있으신가요?</h2>
+                <input type="checkbox" class="link_btn">
+            </div>
+            <div>
+                <input type="text" class="link_text" placeholder="상품페이지가 연결된 쇼핑몰 링크를 등록해주세요">
+            </div>
+        </div>
+        <form action="/shop/update/<%= shop.shop_id %>" method="post" enctype="multipart/form-data">
+            <h3>상품 이미지 등록</h3>
+            <input type="file" name="image_name" multiple required/>
+            <h3>상품제목</h3>
+            <input type="text" name="title" class="shop_title" value="<%=shop.title %>" required>
+            <h3>상품소개</h3>
+            <textarea name="content" maxlength="600" class="shop_content" required><%= shop.content %></textarea>
+            <h3 class="goods-info">상품 상세정보 <span>* 선택적 필수 사항</span></h3>
+            <div class="ingredient">
+                <p>전성분</p>
+                <textarea name="ingredient" required><%= shop.ingredient %></textarea>
+            </div>
+            <div class="ingredient_detail">
+                <div>
+                    <p>알러지 성분 여부</p>
+                    <div class="aliergic_container">
+                        <span>
+                            <img src="../../images/chicken.svg">
+                            <label>닭고기</label>
+                            <input type="checkbox" name="chicken">
+                        </span>
+                        <span>
+                            <img src="../../images/beef.svg">
+                            <label>소고기</label>
+                            <input type="checkbox" name="beef">
+                        </span>
+                        <span>
+                            <img src="../../images/pork.svg">
+                            <label>돼지고기</label>
+                            <input type="checkbox" name="pork">
+                        </span>
+                        <span>
+                            <img src="../../images/nuts.svg">
+                            <label>견과류</label>
+                            <input type="checkbox" name="nuts">
+                        </span>
+                        <input id="allergies" type="text" name="allergies" style="display: none;">
+                    </div>
+                </div>
+                <div class="recommand_age">
+                    <p>급여 권장연령</p>
+                    <div>
+                        <span>
+                            <label>키튼</label>
+                            <input value="키튼" type="radio" name="age" required>
+                        </span>
+                        <span>
+                            <label>성묘</label>
+                            <input value="성묘" type="radio" name="age">
+                        </span>
+                        <span>
+                            <label>노묘</label>
+                            <input value="노묘" type="radio" name="age">
+                        </span>
+                    </div>
+                </div> 
+            </div>          
+            <input type="submit" value="상품 수정">
+            <a href="/shop/<%= shop.shop_id %>">뒤로가기</a>
+        </form>
+    </div>
+    <footer>
+        <ul> 
+            <li><a href="/introduce">페이지 소개</a></li>
+            <li><a href="#">사용자 이용약관</a></li>
+            <li><a href="#">개인정보 처리방침</a></li>
+            <li><a href="/faq">자주묻는 질문</a></li>
+            <li><a href="#">contact</a></li>
+        </ul>
+        <p>email: tabby@naver.com</p>
+        <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../../static/js/shop.js"></script>
+    <script src="../../static/js/index.js"></script>
+</body>
+</html>
