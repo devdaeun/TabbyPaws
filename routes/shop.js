@@ -56,7 +56,7 @@ router.get('/form', (req,res)=>{
     });
 });
 
-router.get('/:shop_id', (req,res)=>{
+router.get('/detail/:shop_id', (req,res)=>{
     const isAuthenticated = req.session.user ? true : false;
     const shopId = req.params.shop_id;
     const sql = "select * from shop where shop_id = ?"
@@ -100,12 +100,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/add', upload.array('image_name'), (req,res)=>{
-    const { title, content, age, ingredient, allergies} = req.body;
+    const { title, price, content, age, ingredient, allergies} = req.body;
     const { user_id } = req.session.user;
 
     // shop 테이블에 정보 저장
-    const sqlShop = 'INSERT INTO shop(user_id, title, content, age, ingredient, allergies) VALUES(?, ?, ?, ?, ?, ?)';
-    connection.query(sqlShop, [user_id, title, content, age, ingredient, allergies], (err, results) => {
+    const sqlShop = 'INSERT INTO shop(user_id, title, price, content, age, ingredient, allergies) VALUES(?, ?, ?, ?, ?, ?)';
+    connection.query(sqlShop, [user_id, title, price, content, age, ingredient, allergies], (err, results) => {
         if (err) {
             console.error('쿼리 오류: ' + err.stack);
             res.status(500).send('서버 오류');
@@ -169,13 +169,13 @@ router.get('/modify/:shop_id', (req, res) => {
 //수정사항 갱신
 router.post('/update/:shop_id', upload.array('image_name'), (req, res) => {
     const shopId = req.params.shop_id;
-    const { title, content, age, ingredient, allergies } = req.body;
+    const { title, price, content, age, ingredient, allergies } = req.body;
     const { user_id } = req.session.user;
 
     // 상품 정보를 업데이트
-    const sql = 'UPDATE shop SET title = ?, content = ?, age = ?, ingredient = ?, allergies = ? WHERE shop_id = ? AND user_id = ?';
+    const sql = 'UPDATE shop SET title = ?, price = ? content = ?, age = ?, ingredient = ?, allergies = ?, updated_at = now() WHERE shop_id = ? AND user_id = ?';
     
-    connection.query(sql, [title, content, age, ingredient, allergies, shopId, user_id], (err, results) => {
+    connection.query(sql, [title, price, content, age, ingredient, allergies, shopId, user_id], (err, results) => {
         if (err) {
             console.error('쿼리 오류: ' + err.stack);
             return res.status(500).send('서버 오류');
@@ -305,5 +305,87 @@ router.post('/delete/:shop_id', (req, res) => {
         }
     });
 });
+
+//검색창(카테고리 포함)
+
+router.get('/search', (req, res) => {
+    const isAuthenticated = req.session.user ? true : false;
+    const { searchValue, allergies, age, minPrice, maxPrice } = req.query;
+    const params = [];
+    let sql = 'SELECT * FROM shop WHERE 1=1';
+
+    // searchValue가 있을 경우
+    if (searchValue) {
+        sql += ' AND title LIKE ?';
+        params.push(`%${searchValue}%`);
+    }
+
+    // allergies가 있을 경우
+    if (allergies) {
+        const allergiesArray = Array.isArray(allergies) ? allergies : [allergies];
+    
+        if (allergiesArray.length === 1) {
+            sql += ' AND FIND_IN_SET(?, allergies)';
+            params.push(allergiesArray[0]);
+        } else {
+            const likeConditions = allergiesArray.map(allergy => `FIND_IN_SET(?, allergies)`).join(' OR ');
+            sql += ` AND (${likeConditions})`;
+            params.push(...allergiesArray);
+        }
+    }
+    
+    
+    // age가 있을 경우
+    if (age) {
+        sql += ' AND age = ?';
+        params.push(age);
+    }
+
+    // minPrice가 있을 경우
+    if (minPrice) {
+        sql += ' AND price >= ?';
+        params.push(minPrice);
+    }
+
+    // maxPrice가 있을 경우
+    if (maxPrice) {
+        sql += ' AND price <= ?';
+        params.push(maxPrice);
+    }
+
+    // 쿼리 실행
+    connection.query(sql, params, (err, results) => {
+        if (err) {
+            console.error('쿼리 오류: ' + err.stack);
+            res.status(500).send('서버 오류');
+            return;
+        }
+        const shop_image = "SELECT shop_id, MIN(img_name) AS img_name FROM shop_img GROUP BY shop_id";
+        connection.query(shop_image,(err,img_results)=>{
+            if (err) {
+                console.error('쿼리 오류: ' + err.stack);
+                res.status(500).send('서버 오류');
+                return;
+            }
+            // shop_id를 기준으로 이미지 맵핑
+            const imageMap = img_results.reduce((acc, img) => {
+                acc[img.shop_id] = img.img_name;
+                return acc;
+            }, {});
+
+            // shop 데이터에 이미지 URL 추가
+            const shopWithImages = results.map(shop => ({
+                ...shop,
+                img_name: imageMap[shop.shop_id] ? `/uploads/${shop.shop_id}/${imageMap[shop.shop_id]}` : null
+            }));
+            res.render('shop/shop_search', { 
+                isAuthenticated,
+                user: req.session.user, 
+                shop: shopWithImages
+            });
+        });
+    });
+});
+
 
 export default router;

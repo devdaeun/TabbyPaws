@@ -47,25 +47,28 @@
     </div>
     <div>
         <% shop.forEach(shop => { %>
-            <div id="carouselExample" class="carousel slide carousel-fade">
-                <div class="carousel-inner">
-                    <% shopImg.forEach(shopImg => { %>
-                        <div class="carousel-item">
-                            <img src="/uploads/<%= shop.shop_id %>/<%= shopImg.img_name %>" class="d-block w-100" width="900px" height="600px">
-                        </div>
-                    <% }) %>
+            <div class="carousel-background">
+                <div id="carouselExample" class="carousel slide carousel-fade">
+                    <div class="carousel-inner">
+                        <% shopImg.forEach(shopImg => { %>
+                            <div class="carousel-item">
+                                <img src="/uploads/<%= shop.shop_id %>/<%= shopImg.img_name %>" class="d-block w-100" width="900px" height="600px">
+                            </div>
+                        <% }) %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
             </div>
             <div class="detail_form">
                 <input value="<%= shop.title %>" name="title"  id="title" disabled>
+                <input value="<%= shop.price %>" name="price"  id="price" disabled>
                 <textarea name="content" id="content" disabled><%= shop.content %></textarea>
                 <div class="shop-item" data-allergies="<%= shop.allergies %>">
                     <h3>전성분</h3>
@@ -75,9 +78,9 @@
                     <h3>급여 권장 연령</h3>
                     <p><%=shop.age%></p>
                 </div>
+                <button class="modify-btn"><a href="/shop/modify/<%= shop.shop_id %>">수정</a></button>
+                <input class="delete-btn" type="button" value="삭제하기" onclick="deleteGoods(<%= shop.shop_id %>)">
             </div>
-            <button><a href="/shop/modify/<%= shop.shop_id %>">수정</a></button>
-            <input type="button" value="삭제하기" onclick="deleteGoods(<%= shop.shop_id %>)">
         <% }) %>
     </div>
     <footer>

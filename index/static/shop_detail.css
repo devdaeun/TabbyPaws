@@ -35,3 +35,35 @@
 .shop-item h3 {
     font-size: 20px;
 }
+
+.carousel-background {
+    width: 80%;
+    background-color: #FFF6E9;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.modify-btn, .delete-btn {
+    width: 150px;
+    padding: 10px;
+    font-size: 18px;
+    margin: 10px auto;
+    background-color: #FFB85A;
+    border: none;
+    color: white;
+    font-weight: 600;
+}
+
+.modify-btn:hover {
+    background-color: #6ABE75;
+}
+
+.delete-btn:hover {
+    background-color: red;
+}
+
+.modify-btn > a{
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}

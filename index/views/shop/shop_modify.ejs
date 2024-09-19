@@ -55,6 +55,8 @@
             <input type="file" name="image_name" multiple required/>
             <h3>상품제목</h3>
             <input type="text" name="title" class="shop_title" value="<%=shop.title %>" required>
+            <h3>상품가격</h3>
+            <input type="number" name="price" value="<%=shop.price %>" required>
             <h3>상품소개</h3>
             <textarea name="content" maxlength="600" class="shop_content" required><%= shop.content %></textarea>
             <h3 class="goods-info">상품 상세정보 <span>* 선택적 필수 사항</span></h3>
@@ -69,22 +71,22 @@
                         <span>
                             <img src="../../images/chicken.svg">
                             <label>닭고기</label>
-                            <input type="checkbox" name="chicken">
+                            <input type="checkbox" value="chicken">
                         </span>
                         <span>
                             <img src="../../images/beef.svg">
                             <label>소고기</label>
-                            <input type="checkbox" name="beef">
+                            <input type="checkbox" value="beef">
                         </span>
                         <span>
                             <img src="../../images/pork.svg">
                             <label>돼지고기</label>
-                            <input type="checkbox" name="pork">
+                            <input type="checkbox" value="pork">
                         </span>
                         <span>
                             <img src="../../images/nuts.svg">
                             <label>견과류</label>
-                            <input type="checkbox" name="nuts">
+                            <input type="checkbox" value="nuts">
                         </span>
                         <input id="allergies" type="text" name="allergies" style="display: none;">
                     </div>

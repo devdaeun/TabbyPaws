@@ -30,10 +30,10 @@
                         <label for="category">알러지 성분</label>
                         <img src="../../images/angle_down.svg" alt="상세보기 버튼" class="toggle_btn" data-target="#allergy-content">
                         <div id="allergy-content" class="aliergic_container" style="display: none;">
-                            <input type="checkbox" name="chicken"> 닭고기
-                            <input type="checkbox" name="beef"> 소고기
-                            <input type="checkbox" name="pork"> 돼지고기
-                            <input type="checkbox" name="nuts"> 견과류
+                            <input type="checkbox" value="chicken"> 닭고기
+                            <input type="checkbox" value="beef"> 소고기
+                            <input type="checkbox" value="pork"> 돼지고기
+                            <input type="checkbox" value="nuts"> 견과류
                             <input id="allergies" type="text" name="allergies" style="display: none;">
                         </div>
                     </div>
@@ -97,7 +97,7 @@
             <a href="/shop/form" class="shop_form_link">상품 등록하기</a>
         <% } %>
         <% shop.forEach(shop => { %>
-            <a href="/shop/detail/<%=shop.shop_id%>" class="shop-contents">
+            <a href="/shop/<%=shop.shop_id%>" class="shop-contents">
                 <div class="shop-item" data-allergies="<%= shop.allergies %>">
                     <img src="<%=shop.img_name%>" style="max-width: 200px;">
                     <p><%= shop.title%></p>
