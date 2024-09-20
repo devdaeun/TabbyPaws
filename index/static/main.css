@@ -52,6 +52,7 @@
 .notice > h3 {
     font-size: 20px;
     padding-left: 7px;
+    margin-bottom: 20px;
 }
 
 .notice_list ul {
@@ -100,4 +101,43 @@
     width: 85%;
     margin: 10px auto;
     gap: 20px;
+}
+
+.new-products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.new-products a {
+    text-decoration: none;
+    color: black;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    margin: 0 auto;
+    gap: 10px;
+    height: 400px;
+}
+
+.products_link {
+    display: block;
+    text-align: right;
+    color: #272327aa;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.shop > h3 {
+    font-size: 20px;
+    padding-left: 7px;
+}
+
+.nav > li {
+    width: 200px;
+    text-align: center;
 }

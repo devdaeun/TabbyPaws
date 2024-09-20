@@ -61,13 +61,51 @@
                 </ul>
             </li>
             <li><a href="/shop">고양이 쇼핑몰</a></li>
-            <li><a href="#">진료병원</a></li>
+            <li class="category_list">
+                <h4>고양이 정보</h4>
+                <ul class="nav_mini">
+                    <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%8F%99%EB%AC%BC%EB%B3%B4%ED%98%B8%EB%B2%95">동물 복지법</a></li>
+                    <li><a href="#">진료병원</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="shop">
-        <h3>인기품목</h3>
-        <p></p>
+        <h3>신상품</h3>
+        <a href="/shop" class="products_link">전체보기 > </a>
+        <div class="new-products">
+            <% if (kittenNew) { %>
+                <a href="shop/detail/<%=kittenNew.shop_id %>">
+                    <div class="product">
+                        <img src="<%= kittenNew.img_name %>" alt="<%= kittenNew.title %>" style="width: 250px; height: 300px;">
+                        <h4><%= kittenNew.title %></h4>
+                        <p>가격: <%= kittenNew.price %> 원</p>
+                    </div>
+                </a>
+            <% } %>
+            
+            <% if (adultNew) { %>
+                <a href="shop/detail/<%=adultNew.shop_id %>">
+                    <div class="product">
+                        <img src="<%= adultNew.img_name %>" alt="<%= adultNew.title %>" style="width: 250px; height: 300px;">
+                        <h4><%= adultNew.title %></h4>
+                        <p>가격: <%= adultNew.price %> 원</p>
+                    </div>
+                </a>
+            <% } %>
+            
+            <% if (seniorNew) { %>
+                <a href="shop/detail/<%=seniorNew.shop_id %>">
+                    <div class="product">
+                        <img src="<%= seniorNew.img_name %>" alt="<%= seniorNew.title %>" style="width: 250px; height: 300px;">
+                        <h4><%= seniorNew.title %></h4>
+                        <p>가격: <%= seniorNew.price %> 원</p>
+                    </div>
+                </a>
+            <% } %>
+        </div>
     </div>
+    
     <div class="middle">
         <div class="notice">
             <h3>공지사항</h3>
@@ -81,7 +119,7 @@
         </div>
         <div class="hospital">
             <h3>지도 간편검색</h3>
-            <div id="map" style="width:auto;height:400px;">
+            <div id="map" style="margin-top: 20px;width:auto;height:400px;">
                 <div id="menu_wrap" class="bg_white">
                     <div class="option">
                         <div>
