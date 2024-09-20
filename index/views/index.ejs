@@ -11,10 +11,12 @@
 <body>
     <header>
         <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
-        <div class="search_banner">
-            <img src="../images/memory_search.svg" alt="검색아이콘">
-            <input type="text" name="search_value" alt="검색창">
-        </div>
+        <form class="search_form" action="/shop/search" method="get">
+            <div class="search_banner">
+                <button type="submit"><img src="../../images/memory_search.svg" alt="검색아이콘"></button>
+                <input type="text" name="searchValue" placeholder="상품 검색" alt="검색창">
+            </div>
+        </form>
         <button id="login-link">
             <img src="../images/login_paw.svg" alt="로그인" class="login-paw-btn">
         </button>
@@ -31,13 +33,13 @@
                 <li><a href="">구매내역</a></li>
                 <li><a href="">장바구니</a></li>
                 <li><a href="">환불/교환 신청</a></li>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="/notice">공지사항</a></li>
+                <li><a href="/faq">FAQ</a></li>
             </ul>
             <ul class="modify_link">
                 <li><a href="">회원정보 수정</a></li>
                 <li><a href="">비밀번호 수정</a></li>
-                <li><a href="">로그아웃</a></li>
+                <li><a href="/logout">로그아웃</a></li>
             </ul>
         <% } else { %>
             <div class="login_page">
@@ -75,7 +77,7 @@
             </div>
         </div>
         <div class="hospital">
-            <h3>병원 지도 api</h3>
+            <h3>지도 간편검색</h3>
             <div id="map" style="width:auto;height:400px;">
                 <div id="menu_wrap" class="bg_white">
                     <div class="option">

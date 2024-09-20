@@ -9,9 +9,9 @@
 </head>
 <body>
     <header>
-        <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+        <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
         <button id="login-link">
-            <img src="../images/login_paw.svg" alt="로그인" class="login-paw-btn">
+            <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
         </button>
     </header>
     <div id="profile-panel" class="profile-panel">
@@ -26,13 +26,13 @@
                 <li><a href="">구매내역</a></li>
                 <li><a href="">장바구니</a></li>
                 <li><a href="">환불/교환 신청</a></li>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="/notice">공지사항</a></li>
+                <li><a href="/faq">FAQ</a></li>
             </ul>
             <ul class="modify_link">
                 <li><a href="">회원정보 수정</a></li>
                 <li><a href="">비밀번호 수정</a></li>
-                <li><a href="">로그아웃</a></li>
+                <li><a href="/logout">로그아웃</a></li>
             </ul>
         <% } else { %>
             <div class="login_page">
@@ -41,16 +41,16 @@
         <% } %>
     </div>
     <div class="shop_container">
-        <div class="link_container">
-            <div class="link_check">
-                <h2>상품이 등록되어있는 쇼핑몰 링크가 있으신가요?</h2>
-                <input type="checkbox" class="link_btn">
-            </div>
-            <div>
-                <input type="text" class="link_text" placeholder="상품페이지가 연결된 쇼핑몰 링크를 등록해주세요">
-            </div>
-        </div>
         <form action="/shop/add" method="post" enctype="multipart/form-data">
+            <div class="link_container">
+                <div class="link_check">
+                    <h2>상품이 등록되어있는 쇼핑몰 링크가 있으신가요?</h2>
+                    <input type="checkbox" class="link_btn">
+                </div>
+                <div>
+                    <input type="text" name="shop_link" class="link_text" placeholder="상품페이지가 연결된 쇼핑몰 링크를 등록해주세요">
+                </div>
+            </div>
             <h3>상품 이미지 등록</h3>
             <input type="file" name="image_name" multiple required/>
             <h3>상품제목</h3>

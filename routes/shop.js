@@ -100,12 +100,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/add', upload.array('image_name'), (req,res)=>{
-    const { title, price, content, age, ingredient, allergies} = req.body;
+    const { title, price, content, age, ingredient, allergies, shop_link} = req.body;
     const { user_id } = req.session.user;
 
     // shop 테이블에 정보 저장
-    const sqlShop = 'INSERT INTO shop(user_id, title, price, content, age, ingredient, allergies) VALUES(?, ?, ?, ?, ?, ?)';
-    connection.query(sqlShop, [user_id, title, price, content, age, ingredient, allergies], (err, results) => {
+    const sqlShop = 'INSERT INTO shop(user_id, title, price, content, age, ingredient, allergies, shop_link) VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+    connection.query(sqlShop, [user_id, title, price, content, age, ingredient, allergies, shop_link], (err, results) => {
         if (err) {
             console.error('쿼리 오류: ' + err.stack);
             res.status(500).send('서버 오류');
@@ -327,7 +327,7 @@ router.get('/search', (req, res) => {
         if (allergiesArray.length === 1) {
             sql += ' AND FIND_IN_SET(?, allergies)';
             params.push(allergiesArray[0]);
-        } else {
+        } else if(allergiesArray.length > 1) {
             const likeConditions = allergiesArray.map(allergy => `FIND_IN_SET(?, allergies)`).join(' OR ');
             sql += ` AND (${likeConditions})`;
             params.push(...allergiesArray);

@@ -72,4 +72,28 @@ $(function() {
       const targetId = $(this).data('target');
       $(targetId).slideToggle(); // 해당 ID의 내용을 펼치거나 숨깁니다.
   });
+
+    $(document).ready(function() {
+        $('.link_btn').change(function() {
+            $('.link_text').slideToggle(this.checked);
+        });
+    });
+
+    $(document).ready(function() {
+        $('.link_btn').change(function() {
+            if (this.checked && $('.link_text').val().trim() !== '') {
+                $('textarea[name="ingredient"]').prop('required', false);
+            } else {
+                $('textarea[name="ingredient"]').prop('required', true);
+            }
+        });
+
+        $('.link_text').on('input', function() {
+            if ($('.link_btn').is(':checked') && $(this).val().trim() !== '') {
+                $('textarea[name="ingredient"]').prop('required', false);
+            } else {
+                $('textarea[name="ingredient"]').prop('required', true);
+            }
+        });
+    });
 });

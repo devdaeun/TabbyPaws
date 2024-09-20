@@ -9,10 +9,10 @@
 </head>
 <body>
     <header>
-        <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+        <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
         <form class="search_form" action="/shop/search" method="get">
             <div class="search_banner">
-                <button type="submit"><img src="../images/memory_search.svg" alt="검색아이콘"></button>
+                <button type="submit"><img src="../../images/memory_search.svg" alt="검색아이콘"></button>
                 <input type="text" name="searchValue" placeholder="상품 검색" alt="검색창">
             </div>
             <div class="search_category">
@@ -27,7 +27,7 @@
                 </div>
                 <div div class="categorys">
                     <div>
-                        <label for="category">알러지 성분</label>
+                        <label for="category">주 성분</label>
                         <img src="../../images/angle_down.svg" alt="상세보기 버튼" class="toggle_btn" data-target="#allergy-content">
                         <div id="allergy-content" class="aliergic_container" style="display: none;">
                             <input type="checkbox" name="chicken"> 닭고기
@@ -63,7 +63,7 @@
             </div>
         </form>       
         <button id="login-link">
-            <img src="../images/login_paw.svg" alt="로그인" class="login-paw-btn">
+            <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
         </button>
     </header>
     <div id="profile-panel" class="profile-panel">
@@ -78,13 +78,13 @@
                 <li><a href="">구매내역</a></li>
                 <li><a href="">장바구니</a></li>
                 <li><a href="">환불/교환 신청</a></li>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="/notice">공지사항</a></li>
+                <li><a href="/faq">FAQ</a></li>
             </ul>
             <ul class="modify_link">
                 <li><a href="">회원정보 수정</a></li>
                 <li><a href="">비밀번호 수정</a></li>
-                <li><a href="">로그아웃</a></li>
+                <li><a href="/logout">로그아웃</a></li>
             </ul>
         <% } else { %>
             <div class="login_page">
@@ -99,8 +99,8 @@
         <% shop.forEach(shop => { %>
             <a href="/shop/detail/<%=shop.shop_id%>" class="shop-contents">
                 <div class="shop-item" data-allergies="<%= shop.allergies %>">
-                    <img src="<%=shop.img_name%>" style="max-width: 200px;">
-                    <p><%= shop.title%></p>
+                    <img src="<%=shop.img_name%>" style="width: 200px;height: 200px;">
+                    <p style="width: 196px;"><%= shop.title%></p>
                     <div class="goods-notice">
                         <div class="allergies-icons"></div>
                         <p><%=shop.age%></p>

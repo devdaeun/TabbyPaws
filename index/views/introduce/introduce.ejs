@@ -9,13 +9,15 @@
 </head>
 <body>
     <header>
-        <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
-        <div class="search_banner">
-            <img src="../images/memory_search.svg" alt="검색아이콘">
-            <input type="text" name="search_value" alt="검색창">
-        </div>
+        <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+        <form class="search_form" action="/shop/search" method="get">
+            <div class="search_banner">
+                <button type="submit"><img src="../../images/memory_search.svg" alt="검색아이콘"></button>
+                <input type="text" name="searchValue" placeholder="상품 검색" alt="검색창">
+            </div>
+        </form>
         <button id="login-link">
-            <img src="../images/login_paw.svg" alt="로그인" class="login-paw-btn">
+            <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
         </button>
     </header>
     <div class="link">
@@ -35,13 +37,13 @@
                 <li><a href="">구매내역</a></li>
                 <li><a href="">장바구니</a></li>
                 <li><a href="">환불/교환 신청</a></li>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="/notice">공지사항</a></li>
+                <li><a href="/faq">FAQ</a></li>
             </ul>
             <ul class="modify_link">
                 <li><a href="">회원정보 수정</a></li>
                 <li><a href="">비밀번호 수정</a></li>
-                <li><a href="">로그아웃</a></li>
+                <li><a href="/logout">로그아웃</a></li>
             </ul>
         <% } else { %>
             <div class="login_page">
@@ -51,18 +53,21 @@
     </div>
     <div class="intro_content">
         <div class="introduce">
-            <img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고">
+            <img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고">
             <p>Tabby Paws는 고양이를 위한 지식을 전달하고,<br>
             사료에대한 정보를 시각적으로 바로 판단할 수 있도록 편리함을 제공하는 사이트입니다. </p>
-            <p>요즘 논란이 되고있는 볼드모트 사료에 대한 정보를 상시업데이트하여 <br>
-                회원에게 편리함을 제공합니다.</p>
+            <p>요즘 논란이 되고있는 볼드모트 사료로 의심되는 브랜드들을 제외한 품목들을 등록하여<br>
+                 사용자에게 안심과 구매에 대한 신뢰성을 제공</p>
             <p>쇼핑몰 인기순위를 한번에 확인할 수 있고,<br> 
                 검색기능(카테고리 검색)을 활용하여 자세한 정보를 검색할 수 있습니다.</p>
+            <p>시시각각 개정중인 동물보호법안 사항을 업데이트하여 동물을 보호하는 관련 법들과<br> 
+                필요 시 즉각적으로 정보에 접근가능하도록 돕습니다.
+            </p>
         </div>
         <div class="engineer">
             <h3>프로젝트 개발자 : 신다은</h3>
             <a href="https://github.com/devdaeun">깃허브 주소</a>
-            <p>개발 기간 24.08.30 ~ 24.09.15</p>
+            <p>개발 기간 24.08.30 ~ 24.09.20</p>
             <div>
                 <p>개발 환경</p>
                 <ul>
@@ -74,6 +79,11 @@
                 </ul>
             </div>
             <p>추후 업데이트 사항</p>
+            <ul>
+                <li>쇼핑몰 댓글기능</li>
+                <li>자유게시판,댓글</li>
+                <li>이메일인증, 비밀번호, 아이디찾기</li>
+            </ul>
         </div>
     </div>
     <footer>

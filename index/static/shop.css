@@ -97,6 +97,8 @@ form h3 {
     background-color: #FFF6E9;
     padding: 40px 20px;
     position: relative;
+    gap: 15px;
+    justify-items: stretch;
 }
 
 .shop-item {
@@ -172,8 +174,10 @@ form h3 {
 }
 
 .shop-contents {
+    display: flex;
     text-decoration: none;
     color: black;
+    align-items: stretch;
 
 }
 

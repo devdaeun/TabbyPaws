@@ -3,7 +3,7 @@
 }
 
 .carousel {
-    width: 80%;
+    width: 600px;
     margin: 0 auto;
 }
 
@@ -27,13 +27,13 @@
 #content, #ingredient{
     background-color: inherit;
     border: 0;
-    font-size: 20px;
+    font-size: 17px;
     resize: none;
     width: 100%;
 }
 
 .shop-item h3 {
-    font-size: 20px;
+    font-size: 19px;
 }
 
 .carousel-background {
@@ -64,6 +64,42 @@
 
 .modify-btn > a{
     text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.detail_top #price {
+    text-align: right;
+    display: block;
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    font-size: 30px;
+    color: red;
+}
+
+.shop-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.shop_links {
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: #6ABE75;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.age{
+    background-color: pink;
+    display: inline-block;
+    padding: 10px 8px;
+    border-radius: 30px;
     color: white;
     font-weight: 600;
 }

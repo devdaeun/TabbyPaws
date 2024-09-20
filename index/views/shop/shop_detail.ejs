@@ -10,13 +10,13 @@
 </head>
 <body id="bodys">
     <header>
-        <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+        <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
         <div class="search_banner">
-            <img src="../images/memory_search.svg" alt="검색아이콘">
+            <img src="../../images/memory_search.svg" alt="검색아이콘">
             <input type="text" name="search_value" alt="검색창">
         </div>
         <button id="login-link">
-            <img src="../images/login_paw.svg" alt="로그인" class="login-paw-btn">
+            <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
         </button>
     </header>
     <div id="profile-panel" class="profile-panel">
@@ -31,13 +31,13 @@
                 <li><a href="">구매내역</a></li>
                 <li><a href="">장바구니</a></li>
                 <li><a href="">환불/교환 신청</a></li>
-                <li><a href="">공지사항</a></li>
-                <li><a href="">FAQ</a></li>
+                <li><a href="/notice">공지사항</a></li>
+                <li><a href="/faq">FAQ</a></li>
             </ul>
             <ul class="modify_link">
                 <li><a href="">회원정보 수정</a></li>
                 <li><a href="">비밀번호 수정</a></li>
-                <li><a href="">로그아웃</a></li>
+                <li><a href="/logout">로그아웃</a></li>
             </ul>
         <% } else { %>
             <div class="login_page">
@@ -67,19 +67,33 @@
                 </div>
             </div>
             <div class="detail_form">
-                <input value="<%= shop.title %>" name="title"  id="title" disabled>
-                <input value="<%= shop.price %>" name="price"  id="price" disabled>
-                <textarea name="content" id="content" disabled><%= shop.content %></textarea>
-                <div class="shop-item" data-allergies="<%= shop.allergies %>">
-                    <h3>전성분</h3>
-                    <textarea name="ingredient" id="ingredient" disabled><%= shop.ingredient %></textarea>
-                    <h3>알러지 성분</h3>
-                    <div class="allergies-icons"></div>
-                    <h3>급여 권장 연령</h3>
-                    <p><%=shop.age%></p>
+                <div class="detail_top">
+                    <input value="<%= shop.title %>" name="title"  id="title" disabled>
+                    <input value="<%= shop.price %>" name="price"  id="price" disabled>
                 </div>
-                <button class="modify-btn"><a href="/shop/modify/<%= shop.shop_id %>">수정</a></button>
-                <input class="delete-btn" type="button" value="삭제하기" onclick="deleteGoods(<%= shop.shop_id %>)">
+                <div class="shop-item" data-allergies="<%= shop.allergies %>">
+                    <div>
+                        <h3>상세정보</h3>
+                        <textarea name="content" id="content" disabled><%= shop.content %></textarea>
+                    </div>
+                    <div>
+                        <h3>전성분</h3>
+                        <textarea name="ingredient" id="ingredient" disabled><%= shop.ingredient %></textarea>
+                    </div>
+                    <div>
+                        <h3>알러지 성분</h3>
+                        <div class="allergies-icons"></div>
+                    </div>
+                    <div>
+                        <h3>급여 권장 연령</h3>
+                        <p class="age"><%=shop.age%></p>
+                    </div>
+                </div>
+                <a href="<%= shop.shop_link %>" class="shop_links">구매하기</a>
+                <% if ( isAuthenticated && shop.user_id == user.user_id) { %>
+                    <button class="modify-btn"><a href="/shop/modify/<%= shop.shop_id %>">수정</a></button>
+                    <input class="delete-btn" type="button" value="삭제하기" onclick="deleteGoods(<%= shop.shop_id %>)">
+                <% } %>
             </div>
         <% }) %>
     </div>
