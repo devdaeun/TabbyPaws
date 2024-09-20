@@ -28,7 +28,14 @@
 .title_box {
     display: flex;
     align-items: center;
+    width: 80%;
     justify-content: space-between;
+    margin: 0 auto;
+}
+
+.answer {
+    width: 80%;
+    margin: 0 auto;
 }
 
 .title_box input, .answer input {

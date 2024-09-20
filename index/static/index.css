@@ -1,6 +1,8 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: sans-serif, monospace,"Roboto Mono";
+    font-weight: 400;
 }
 
 body {
