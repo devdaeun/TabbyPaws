@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/index.css"/> 
+    <link rel="stylesheet" href="../../static/shop.css"/>
     <link rel="stylesheet" href="../../static/shop_detail.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,16 +12,47 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body id="bodys">
+<body>
     <header>
-        <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
-        <div class="search_banner">
-            <img src="../../images/memory_search.svg" alt="검색아이콘">
-            <input type="text" name="search_value" alt="검색창">
+        <div class="header-layouts">
+            <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+            <div class="category">
+                <ul class="nav">
+                    <li class="category_list">
+                        <h4>홈페이지</h4>
+                        <ul class="nav_mini">
+                            <li><a href="/notice">공지사항</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/introduce">홈페이지 소개</a></li>
+                        </ul>
+                    </li>
+                    <li class="category_list">
+                        <h4>고양이 정보</h4>
+                        <ul class="nav_mini">
+                            <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%8F%99%EB%AC%BC%EB%B3%B4%ED%98%B8%EB%B2%95">동물 복지법</a></li>
+                            <li><a href="">자유게시판</a></li>
+                            <li><a href="#">진료병원</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>쇼핑몰</h4>
+                        <ul class="nav_mini">
+                            <li><a href="/shop">전체보기</a></li>
+                            <li><a>사료 취향 테스트</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <button id="login-link">
+                <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
+            </button>
         </div>
-        <button id="login-link">
-            <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
-        </button>
+        <form class="search_form" action="/shop/search" method="get">
+            <div class="search_banner">
+                <button type="submit"><img src="../../images/memory_search.svg" alt="검색아이콘"></button>
+                <input type="text" name="searchValue" placeholder="상품 검색" alt="검색창">
+            </div>
+        </form>       
     </header>
     <div id="profile-panel" class="profile-panel">
         <button class="close-btn" id="close-profile">닫기</button>

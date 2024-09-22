@@ -12,10 +12,45 @@
 </head>
 <body>
     <header>
-        <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
-        <button id="login-link">
-            <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
-        </button>
+        <div class="header-layouts">
+            <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+            <div class="category">
+                <ul class="nav">
+                    <li class="category_list">
+                        <h4>홈페이지</h4>
+                        <ul class="nav_mini">
+                            <li><a href="/notice">공지사항</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/introduce">홈페이지 소개</a></li>
+                        </ul>
+                    </li>
+                    <li class="category_list">
+                        <h4>고양이 정보</h4>
+                        <ul class="nav_mini">
+                            <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EB%8F%99%EB%AC%BC%EB%B3%B4%ED%98%B8%EB%B2%95">동물 복지법</a></li>
+                            <li><a href="">자유게시판</a></li>
+                            <li><a href="#">진료병원</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h4>쇼핑몰</h4>
+                        <ul class="nav_mini">
+                            <li><a href="/shop">전체보기</a></li>
+                            <li><a>사료 취향 테스트</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <button id="login-link">
+                <img src="../../images/login_paw.svg" alt="로그인" class="login-paw-btn">
+            </button>
+        </div>
+        <form class="search_form" action="/shop/search" method="get">
+            <div class="search_banner">
+                <button type="submit"><img src="../../images/memory_search.svg" alt="검색아이콘"></button>
+                <input type="text" name="searchValue" placeholder="상품 검색" alt="검색창">
+            </div>
+        </form>       
     </header>
     <div id="profile-panel" class="profile-panel">
         <button class="close-btn" id="close-profile">닫기</button>

@@ -43,7 +43,7 @@
 .shop {
     padding: 15px 20px;
     background-color: #FFF6E9;
-    width: 85%;
+    width: 75%;
     margin: 0 auto;
     border-radius: 8px;
 }
@@ -72,7 +72,7 @@
 .new-products {
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: space-around;
 }
 
 .new-products a {
@@ -107,10 +107,64 @@
 
 .shop h4 {
     color: #2a2a2a;
+    width: 190px;
+    height: 27px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .shop_content {
-    width: 85%;
+    width: 73%;
     margin: 20px auto 0;
     font-size: 25px;
+}
+
+.food_test {
+    margin: 20px auto;
+    width: 67%;
+    background-color: #FFC1C1;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+}
+.food_test > div {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-grow: 1;
+}
+.food_test h3 {
+    font-size: 19px;
+    color: #313131;
+}
+.food_test > img {
+    width: 100px;
+    height: 100px;
+}
+
+.food_test a {
+    text-decoration: none;
+    color: #4A4A4A;
+    background-color: #FFDBB0;
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.food_test a:hover {
+    background-color: #FF9878;
+    color: black;
+}
+
+.main_cat {
+    display: block;
+    height: 200px;
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+    bottom: -20px;
 }
