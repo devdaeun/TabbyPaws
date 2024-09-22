@@ -43,8 +43,8 @@ $(function() {
       const allergyIcons = {
           chicken: '../../images/chicken.svg',
           beef: '../../images/beef.svg',
-          pork: '../../images/pork.svg',
-          nuts: '../../images/nuts.svg'
+          sheep: '../../images/sheep.svg',
+          fish: '../../images/fish.svg'
       };
       return allergyIcons[allergy] || null;
   }
