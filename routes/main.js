@@ -20,63 +20,52 @@ router.get('/', (req, res) => {
             notice.created_at = moment(notice.created_at).format('YYYY-MM-DD');
         });
 
-        const kittenNew = "SELECT * FROM shop WHERE age='키튼' ORDER BY created_at DESC LIMIT 1";
-        const adultNew = "SELECT * FROM shop WHERE age='성묘' ORDER BY created_at DESC LIMIT 1";
-        const seniorNew = "SELECT * FROM shop WHERE age='노묘' ORDER BY created_at DESC LIMIT 1";
-
-        // 각 나이별 신상품 쿼리 실행
-        connection.query(kittenNew, (err, kittenResults) => {
+        // 최신 상품 4개 조회
+        const shopSql = "SELECT * FROM shop ORDER BY created_at DESC LIMIT 4";
+        connection.query(shopSql, (err, shopResults) => {
             if (err) {
                 console.error('쿼리 오류: ' + err.stack);
                 res.status(500).send('서버 오류');
                 return;
             }
-            connection.query(adultNew, (err, adultResults) => {
+
+            // 각 상품의 이미지 가져오기
+            const shopIds = shopResults.map(shop => shop.shop_id);
+            const shopImgSql = "SELECT shop_id, img_name FROM shop_img WHERE shop_id IN (?)";
+
+            connection.query(shopImgSql, [shopIds], (err, imgResults) => {
                 if (err) {
                     console.error('쿼리 오류: ' + err.stack);
                     res.status(500).send('서버 오류');
                     return;
                 }
-                connection.query(seniorNew, (err, seniorResults) => {
-                    if (err) {
-                        console.error('쿼리 오류: ' + err.stack);
-                        res.status(500).send('서버 오류');
-                        return;
+
+                // 이미지 매핑
+                const shopImages = {};
+                imgResults.forEach(img => {
+                    if (!shopImages[img.shop_id]) {
+                        shopImages[img.shop_id] = [];
                     }
+                    shopImages[img.shop_id].push(img.img_name);
+                });
 
-                    // 이미지 쿼리 추가
-                    const kittenImgQuery = "SELECT shop_id, img_name FROM shop_img WHERE shop_id = ? LIMIT 1";
-                    const adultImgQuery = "SELECT shop_id, img_name FROM shop_img WHERE shop_id = ? LIMIT 1";
-                    const seniorImgQuery = "SELECT shop_id, img_name FROM shop_img WHERE shop_id = ? LIMIT 1";
+                // 이미지 URL 추가
+                const goodsWithImages = shopResults.map(shop => ({
+                    ...shop,
+                    img_name: shopImages[shop.shop_id] ? `/uploads/${shop.shop_id}/${shopImages[shop.shop_id][0]}` : null
+                }));
 
-                    connection.query(kittenImgQuery, [kittenResults[0].shop_id], (err, kittenImgResults) => {
-                        if (err) return handleQueryError(err, res);
-                        connection.query(adultImgQuery, [adultResults[0].shop_id], (err, adultImgResults) => {
-                            if (err) return handleQueryError(err, res);
-                            connection.query(seniorImgQuery, [seniorResults[0].shop_id], (err, seniorImgResults) => {
-                                if (err) return handleQueryError(err, res);
-
-                                // 이미지 URL 추가
-                                const kittenImage = kittenImgResults[0] ? `/uploads/${kittenResults[0].shop_id}/${kittenImgResults[0].img_name}` : null;
-                                const adultImage = adultImgResults[0] ? `/uploads/${adultResults[0].shop_id}/${adultImgResults[0].img_name}` : null;
-                                const seniorImage = seniorImgResults[0] ? `/uploads/${seniorResults[0].shop_id}/${seniorImgResults[0].img_name}` : null;
-
-                                res.render('index', {
-                                    isAuthenticated,
-                                    user: req.session.user,
-                                    notices: results,
-                                    kittenNew: { ...kittenResults[0], img_name: kittenImage },
-                                    adultNew: { ...adultResults[0], img_name: adultImage },
-                                    seniorNew: { ...seniorResults[0], img_name: seniorImage }
-                                });
-                            });
-                        });
-                    });
+                res.render('index', {
+                    isAuthenticated,
+                    user: req.session.user,
+                    notices: results,
+                    goods: goodsWithImages,
                 });
             });
         });
     });
 });
+
 
 router.get('/introduce', (req, res) => {
     const isAuthenticated = req.session.user ? true : false;

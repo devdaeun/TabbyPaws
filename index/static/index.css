@@ -90,6 +90,7 @@ header {
     flex-direction: row;
     margin: 30px auto;
     border-radius: 30px;
+    overflow: hidden;
 }
 
 .search_form {
@@ -118,7 +119,7 @@ header {
     border: 0;
     height: 35px;
     padding: 5px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 

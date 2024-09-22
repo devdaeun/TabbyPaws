@@ -70,8 +70,9 @@
 }
 
 .new-products {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .new-products a {
@@ -81,13 +82,14 @@
 
 .product {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    justify-content: space-between;
-    width: 200px;
+    width: 220px;
     margin: 0 auto;
-    gap: 10px;
-    height: 400px;
+    gap: 5px;
+    height: 300px;
+    background-color: white;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .products_link {
@@ -101,4 +103,14 @@
 .shop > h3 {
     font-size: 20px;
     padding-left: 7px;
+}
+
+.shop h4 {
+    color: #2a2a2a;
+}
+
+.shop_content {
+    width: 85%;
+    margin: 20px auto 0;
+    font-size: 25px;
 }

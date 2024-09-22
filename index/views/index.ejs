@@ -80,39 +80,19 @@
             </div>
         <% } %>
     </div>
+    <h3 class="shop_content">신상품</h3>
     <div class="shop">
-        <h3>신상품</h3>
         <a href="/shop" class="products_link">전체보기 > </a>
         <div class="new-products">
-            <% if (kittenNew) { %>
-                <a href="shop/detail/<%=kittenNew.shop_id %>">
+            <% goods.forEach(goods => { %>
+                <a href="shop/detail/<%=goods.shop_id %>">
                     <div class="product">
-                        <img src="<%= kittenNew.img_name %>" alt="<%= kittenNew.title %>" style="width: 250px; height: 300px;">
-                        <h4><%= kittenNew.title %></h4>
-                        <p>가격: <%= kittenNew.price %> 원</p>
+                        <img src="<%= goods.img_name %>" alt="<%= goods.title %>" style="width: 100%;height: 70%;">
+                        <h4><%= goods.title %></h4>
                     </div>
                 </a>
-            <% } %>
+            <% }) %>
             
-            <% if (adultNew) { %>
-                <a href="shop/detail/<%=adultNew.shop_id %>">
-                    <div class="product">
-                        <img src="<%= adultNew.img_name %>" alt="<%= adultNew.title %>" style="width: 250px; height: 300px;">
-                        <h4><%= adultNew.title %></h4>
-                        <p>가격: <%= adultNew.price %> 원</p>
-                    </div>
-                </a>
-            <% } %>
-            
-            <% if (seniorNew) { %>
-                <a href="shop/detail/<%=seniorNew.shop_id %>">
-                    <div class="product">
-                        <img src="<%= seniorNew.img_name %>" alt="<%= seniorNew.title %>" style="width: 250px; height: 300px;">
-                        <h4><%= seniorNew.title %></h4>
-                        <p>가격: <%= seniorNew.price %> 원</p>
-                    </div>
-                </a>
-            <% } %>
         </div>
     </div>
     
