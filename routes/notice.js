@@ -29,8 +29,8 @@ router.get('/', (req, res) => {
         // 전체 페이지 수
         const totalPages = Math.ceil(totalItems / ITEMS_LINIT_PAGE); //전체에서 10개로 나누깅
 
-        // 데이터 가져오기 쿼리
-        const sql = `SELECT * FROM notice LIMIT ${offset}, ${ITEMS_LINIT_PAGE}`;
+        // 데이터 가져오기 쿼리 
+        const sql = `SELECT * FROM notice ORDER BY created_at desc LIMIT ${offset}, ${ITEMS_LINIT_PAGE}`;
         const isAuthenticated = req.session.user ? true : false;
         
         connection.query(sql, (err, results) => {

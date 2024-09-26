@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/index.css"/> 
-    <link rel="stylesheet" href="../../static/faq.css"/> 
-    <title>faq</title>
+    <link rel="stylesheet" href="../../static/introduce.css"/> 
+    <title>페이지 소개</title>
 </head>
 <body>
     <header>
@@ -53,6 +53,11 @@
         </div>
         <h1 class="header-title">Tabby Paws는 고양이를 위한 프리미엄 사료 쇼핑몰입니다.</h1>
     </header>
+    <div class="link">
+        <a href="/introduce" class="checked">홈페이지 소개</a>
+        <a href="/notice">공지사항</a>
+        <a href="/faq">FAQ</a>
+    </div>
     <div id="profile-panel" class="profile-panel">
         <button class="close-btn" id="close-profile">닫기</button>
         <!-- 프로필 내용을 동적으로 삽입 -->
@@ -79,51 +84,43 @@
             </div>
         <% } %>
     </div>
-    <div class="link">
-        <a href="/introduce">홈페이지 소개</a>
-        <a href="/notice">공지사항</a>
-        <a href="/faq" class="checked">FAQ</a>
-    </div>
-    <div class="faq_container">
-        <% if (isAuthenticated && user.role === '관리자') { %>
-            <a href="/faq/form">faq 작성하기</a>
-        <% } %>
-        <% faqs.forEach(faq => { %>
-            <form class="faqitem">
-                <input type="hidden" value="<%= faq.faq_id %>" name="faq_id">
-                <div class="title_box">
-                    <input type="text" value="<%= faq.title %>" name="title" class="faq_title" disabled>
-                    <img src="../../images/angle_down.svg" alt="상세보기 버튼" class="toggle_btn">
-                </div>
-                <div class="answer" style="display: none;">
-                    <textarea type="text" name="content" class="faq_content" disabled><%= faq.content %></textarea>
-                </div>
-                <% if (isAuthenticated && user.role === '관리자') { %>
-                    <div class="review_mbtn" style="display: none;">
-                        <input type="button" value="수정반영하기" onclick="updateFaq(this.form)">
-                        <input type="button" value="뒤로가기" class="return_button">
-                    </div>
-                    <div class="rewrite_btn">
-                        <input type="button" value="수정" class="modify_button">
-                        <input type="button" value="삭제" class="faq-button" onclick="deleteFaq(<%= faq.faq_id %>)">
-                    </div>
-                <% } %>
-            </form>
-        <% }) %>
-        <!-- 페이징 번호 -->
-        <div class="paging">
-            <% if (currentPage > 1) { %>
-                <a href="?page=<%= currentPage - 1 %>">Previous</a>
-            <% } %>
-            
-            <% for (let i = 1; i <= totPages; i++) { %>
-                <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
-            <% } %>
-            
-            <% if (currentPage < totPages) { %>
-                <a href="?page=<%= currentPage + 1 %>">Next</a>
-            <% } %>
-        </div>
+    <div>
+        <form>
+            <div>
+                <label>고양이 나이</label>
+                <select>
+                    <option value="키튼">키튼</option>
+                    <option value="성묘">성묘</option>
+                    <option value="노묘">노묘</option>
+                </select>
+            </div>
+            <div>
+                <label>선호 텍스쳐</label>
+                <select>
+                    <option value="건사료">건사료</option>
+                    <option value="습식사료">습식사료</option>
+                    <option value="혼합">혼합</option>
+                </select>
+            </div>
+            <div>
+                <label>좋아하는 맛</label>
+                <select>
+                    <option value="닭고기">닭고기</option>
+                    <option value="소고기">소고기</option>
+                    <option value="양고기">양고기</option>
+                    <option value="생선">생선</option>
+                </select>
+            </div>
+            <div>
+                <label>특이사항</label>
+                <select>
+                    <option value="다이어트">다이어트</option>
+                    <option value="헤어볼">헤어볼</option>
+                    <option value="민감성">민감성</option>
+                </select>
+            </div>
+            <input type="submit" value="사료 추천 받기"> 
+        </form>
     </div>
     <footer>
         <ul>
@@ -136,8 +133,6 @@
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="../../static/js/faq.js"></script>
     <script src="../static/js/index.js"></script>
 </body>
 </html>

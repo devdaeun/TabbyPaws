@@ -9,14 +9,16 @@
 }
 .notice {
     width: 54%;
+}
+
+.notice_list {
     background-color: #FFF6E9;
-    display: inline-block;
     border-radius: 8px;
     padding: 8px;
 }
 
-.notice > h3 {
-    font-size: 20px;
+.notice > h3, .hospital > h3 {
+    font-size: 25px;
     padding-left: 7px;
     margin-bottom: 20px;
 }
@@ -49,11 +51,7 @@
 }
 
 .hospital {
-    padding: 15px 20px;
-    background-color: #FFF6E9;
     width: 51%;
-    display: inline-block;
-    border-radius: 8px;
 }
 
 .category_list {

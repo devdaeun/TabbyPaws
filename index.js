@@ -8,6 +8,7 @@ import notice from './routes/notice.js';
 import login from './routes/login.js';
 import faq from './routes/faq.js';
 import shop from './routes/shop.js';
+import survey from './routes/survey.js';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -42,5 +43,6 @@ app.use('/notice', notice);
 app.use('/', login);
 app.use('/faq', faq);
 app.use('/shop', shop);
+app.use('/survey', survey);
 
 app.listen(3000, () => console.log('Server started on port 3000'));

@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    const sql = 'SELECT * FROM notice LIMIT 10';
+    const sql = 'SELECT * FROM notice ORDER BY created_at DESC LIMIT 10';
     const isAuthenticated = req.session.user ? true : false;
 
     connection.query(sql, (err, results) => {
