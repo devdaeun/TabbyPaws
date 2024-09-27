@@ -7,13 +7,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/index.css"/> 
-    <link rel="stylesheet" href="../../static/introduce.css"/> 
+    <link rel="stylesheet" href="../../static/survey.css"/> 
     <title>페이지 소개</title>
 </head>
 <body>
     <header>
         <div class="header-layouts">
-            <a href="/"><img src="../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
+            <a href="/"><img src="../../images/TabbyPaws.svg" alt="TabbyPaws 로고"></a>
             <div class="category">
                 <ul class="nav">
                     <li class="category_list">
@@ -53,11 +53,6 @@
         </div>
         <h1 class="header-title">Tabby Paws는 고양이를 위한 프리미엄 사료 쇼핑몰입니다.</h1>
     </header>
-    <div class="link">
-        <a href="/introduce" class="checked">홈페이지 소개</a>
-        <a href="/notice">공지사항</a>
-        <a href="/faq">FAQ</a>
-    </div>
     <div id="profile-panel" class="profile-panel">
         <button class="close-btn" id="close-profile">닫기</button>
         <!-- 프로필 내용을 동적으로 삽입 -->
@@ -84,44 +79,57 @@
             </div>
         <% } %>
     </div>
-    <div>
-        <form>
+    <div class="survey_content">
+        <div id="survey_form">
             <div>
-                <label>고양이 나이</label>
-                <select>
-                    <option value="키튼">키튼</option>
-                    <option value="성묘">성묘</option>
-                    <option value="노묘">노묘</option>
-                </select>
+                <div class="selects">
+                    <label>고양이 나이</label>
+                    <select name="age" required> 
+                        <option disabled selected>선택</option>
+                        <option value="키튼">키튼</option>
+                        <option value="성묘">성묘</option>
+                        <option value="노묘">노묘</option>
+                    </select>
+                </div>
+                <div class="selects">
+                    <label>선호 텍스쳐</label>
+                    <select name="texture">
+                        <option>선택</option>
+                        <option value="건사료">건사료</option>
+                        <option value="습식사료">습식사료</option>
+                        <option value="혼합">혼합</option>
+                    </select>
+                </div>
             </div>
             <div>
-                <label>선호 텍스쳐</label>
-                <select>
-                    <option value="건사료">건사료</option>
-                    <option value="습식사료">습식사료</option>
-                    <option value="혼합">혼합</option>
-                </select>
+                <div class="selects">
+                    <label>좋아하는 맛</label>
+                    <select name="allergies" required>
+                        <option disabled selected>선택</option>
+                        <option value="chicken">닭고기</option>
+                        <option value="beef">소고기</option>
+                        <option value="sheep">양고기</option>
+                        <option value="fish">생선</option>
+                    </select>
+                </div>
+                <div class="selects">
+                    <label>특이사항</label>
+                    <select name="special" required>
+                        <option>없음</option>
+                        <option value="다이어트">다이어트</option>
+                        <option value="헤어볼">헤어볼</option>
+                        <option value="민감성">민감성</option>
+                    </select>
+                </div>
             </div>
-            <div>
-                <label>좋아하는 맛</label>
-                <select>
-                    <option value="닭고기">닭고기</option>
-                    <option value="소고기">소고기</option>
-                    <option value="양고기">양고기</option>
-                    <option value="생선">생선</option>
-                </select>
-            </div>
-            <div>
-                <label>특이사항</label>
-                <select>
-                    <option value="다이어트">다이어트</option>
-                    <option value="헤어볼">헤어볼</option>
-                    <option value="민감성">민감성</option>
-                </select>
-            </div>
-            <input type="submit" value="사료 추천 받기"> 
-        </form>
+        </div>
+        <button onclick="foodResult()">사료 추천받기</button>
+        <div>
+            <h3>추천 사료</h3>
+            <div id="survey_result"></div>
+        </div>
     </div>
+    
     <footer>
         <ul>
             <li><a href="#">페이지 소개</a></li>
@@ -133,6 +141,7 @@
         <p>email: tabby@naver.com</p>
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
-    <script src="../static/js/index.js"></script>
+    <script src="../../static/js/index.js"></script>
+    <script src="../../static/js/survey.js"></script>
 </body>
 </html>

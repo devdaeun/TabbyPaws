@@ -5,6 +5,7 @@
     background-color: #FFF6E9;
     padding: 30px;
     border-radius: 0 10px 10px 10px;
+    min-height: 70vh;
 }
 .introduce {
     display: inline-block;

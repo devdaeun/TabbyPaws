@@ -1,0 +1,42 @@
+.survey_content {
+    width: 85%;
+    margin: 30px auto;
+    background-color: #FFF6E9;
+    padding: 30px;
+    border-radius: 0 10px 10px 10px;
+    min-height: 70vh;
+}
+
+#survey_form {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#survey_form select {
+    font-size: 20px;
+    padding: 2px 5px;
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90px;
+}
+
+#survey_form label {
+    font-size: 25px;
+}
+
+.selects {
+    margin: 20px;
+    width: 350px;
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 31px auto;
+    background-color: #FFC271;
+    border: none;
+    padding: 15px 30px;
+    font-size: 24px;
+}
