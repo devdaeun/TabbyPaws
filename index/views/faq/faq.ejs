@@ -86,7 +86,7 @@
     </div>
     <div class="faq_container">
         <% if (isAuthenticated && user.role === '관리자') { %>
-            <a href="/faq/form">faq 작성하기</a>
+            <a href="/faq/form" class="faq_form_link">faq 작성하기</a>
         <% } %>
         <% faqs.forEach(faq => { %>
             <form class="faqitem">

@@ -86,7 +86,7 @@
     </div>
     <div class="notice_content">
         <% if (isAuthenticated && user.role === '관리자') { %>
-            <a href="/notice/form">공지사항 작성</a>
+            <a href="/notice/form" class="notice_form_link">공지사항 작성</a>
         <% } %>
         <div class="notice_list">
             <ul>
