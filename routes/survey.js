@@ -32,22 +32,16 @@ router.post('/result', (req, res) => {
     if (age !== null) {
         conditions.push('age = ?');
         params.push(age);
-    } else {
-        conditions.push('age IS NULL');
     }
 
     if (texture !== null) {
         conditions.push('texture = ?');
         params.push(texture);
-    } else {
-        conditions.push('texture IS NULL');
     }
 
     if (allergies !== null) {
         conditions.push('allergies = ?');
         params.push(allergies);
-    } else {
-        conditions.push('allergies IS NULL');
     }
 
     if (special !== null) {
