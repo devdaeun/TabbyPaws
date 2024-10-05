@@ -1,8 +1,9 @@
 function foodResult(){
-    const age = document.querySelector('select[name="age"]').value;
+    const age = document.querySelector('select[name="age"]').value || null;
     const texture = document.querySelector('select[name="texture"]').value || null;
     const allergies = document.querySelector('select[name="allergies"]').value || null;
     const special = document.querySelector('select[name="special"]').value || null;
+
     
 
     fetch('/survey/result', {

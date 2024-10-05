@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/index.css"/> 
-    <link rel="stylesheet" href="../../static/survey.css"/> 
-    <title>페이지 소개</title>
+    <title>회원정보 수정</title>
 </head>
 <body>
     <header>
@@ -79,57 +74,12 @@
             </div>
         <% } %>
     </div>
-    <div class="survey_content">
-        <div id="survey_form">
-            <div>
-                <div class="selects">
-                    <label>고양이 나이</label>
-                    <select name="age" required> 
-                        <option value="">선택</option>
-                        <option value="키튼">키튼</option>
-                        <option value="성묘">성묘</option>
-                        <option value="노묘">노묘</option>
-                    </select>
-                </div>
-                <div class="selects">
-                    <label>선호 텍스쳐</label>
-                    <select name="texture">
-                        <option value="">선택</option>
-                        <option value="건사료">건사료</option>
-                        <option value="습식사료">습식사료</option>
-                        <option value="혼합">혼합</option>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <div class="selects">
-                    <label>좋아하는 맛</label>
-                    <select name="allergies" required>
-                        <option value="">선택</option>
-                        <option value="chicken">닭고기</option>
-                        <option value="beef">소고기</option>
-                        <option value="sheep">양고기</option>
-                        <option value="fish">생선</option>
-                    </select>
-                </div>
-                <div class="selects">
-                    <label>특이사항</label>
-                    <select name="special" required>
-                        <option value="">없음</option>
-                        <option value="다이어트">다이어트</option>
-                        <option value="헤어볼">헤어볼</option>
-                        <option value="민감성">민감성</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <button onclick="foodResult()">사료 추천받기</button>
-        <div>
-            <h3>추천 사료</h3>
-            <div id="survey_result"></div>
-        </div>
+    <div>
+        <form>
+            <input>
+            <input>
+        </form>
     </div>
-    
     <footer>
         <ul>
             <li><a href="#">페이지 소개</a></li>
@@ -142,6 +92,5 @@
         <p class="copywrite">© 2024 TabbyPaws ALL RIGHTS RESERVED</p>
     </footer>
     <script src="../../static/js/index.js"></script>
-    <script src="../../static/js/survey.js"></script>
 </body>
 </html>
