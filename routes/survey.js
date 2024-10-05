@@ -63,7 +63,6 @@ router.post('/result', (req, res) => {
 
         if (results.length > 0) {
             const recommendations = results.map(result => result.title); // 원하는 컬럼
-            console.log(sql)
             res.json({ recommendations });
         } else {
             res.json({ recommendations: ['추천 결과가 없습니다.'] });
